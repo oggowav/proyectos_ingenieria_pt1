@@ -1,6 +1,7 @@
 import os
 import time
 import re
+import time
 from collections import Counter, defaultdict
 
 project_folder = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1'
@@ -401,9 +402,94 @@ def create_filtered_hash_table_dictionary(folder_path, project_folder, matricula
         for filename, duration in file_durations:
             log.write(f"{filename}           {duration:.4f} \n")
         
-        log.write(f"Tiempo total de ejecucion del programa: {total_time:.4f} segundos\n") 
+        log.write(f"Tiempo total de ejecucio||n del programa: {total_time:.4f} segundos\n") 
 
     return file_durations, total_time, total_collisions, HASH_TABLE_SIZE
+
+def create_inverted_index(folder_path, project_folder, matricula="03038135"):
+    files_to_process = sorted([f for f in os.listdir(folder_path) if f.endswith('.html')])
+
+    log_filename = f"a11_{matricula}.txt"
+    log_path = os.path.join(project_folder, log_filename)
+
+    with open(log_path, "w", encoding="utf-8") as log:
+        log.write("=== A11 - Generación de Índice Invertido ===\n")
+        log.write(f"Matrícula: {matricula}\n\n")
+
+        document_ids = {}
+        documents_output = os.path.join(project_folder, "documents.txt")
+
+        with open(documents_output, "w", encoding="utf-8") as doc_file:
+            start_total = time.time()
+
+            for i, filename in enumerate(files_to_process, start=1):
+                start = time.time()
+
+                full_path = os.path.join(folder_path, filename)
+                document_ids[filename] = i
+                doc_file.write(f"{i} - {filename} - {full_path}\n")
+
+                end = time.time()
+                log.write(f"{filename} - {end - start:.4f} segundos\n")
+
+        log.write("\n=== Procesando tokens ===\n")
+
+        token_doc_freq = defaultdict(lambda: defaultdict(int))
+
+        for filename in files_to_process:
+            start = time.time()
+            full_path = os.path.join(folder_path, filename)
+
+            with open(full_path, "r", encoding="latin-1") as f:
+                cleaned = re.sub(r'<.*?>', '', f.read())
+                words = extract_words(cleaned)
+
+                for w in words:
+                    token = w.lower()
+                    token_doc_freq[token][filename] += 1
+
+            end = time.time()
+            log.write(f"Tokens de {filename} procesados en {end - start:.4f} segundos\n")
+
+        log.write("\n=== Creando Posting y Diccionario ===\n")
+
+        posting_output = os.path.join(project_folder, "posting.txt")
+        dictionary_output = os.path.join(project_folder, "dictionary.txt")
+
+        posting_position = 0
+        posting_entries = []
+
+        with open(dictionary_output, "w", encoding="utf-8") as dict_file, \
+             open(posting_output, "w", encoding="utf-8") as post_file:
+
+            for token in sorted(token_doc_freq.keys()):
+                docs = token_doc_freq[token]
+                total_freq = sum(docs.values())
+
+                start_pos = posting_position
+
+                for filename, freq in docs.items():
+                    doc_id = document_ids[filename]
+                    weight = round(freq / total_freq, 4)
+                    posting_entries.append(f"{doc_id} - {weight}")
+                    posting_position += 1
+
+                dict_file.write(
+                    f"token: {token} | freq: {total_freq} | docs: {len(docs)} | posting_pos: {start_pos}\n"
+                )
+
+            for idx, entry in enumerate(posting_entries):
+                post_file.write(f"{idx}:  {entry}\n")
+
+        end_total = time.time()
+        total_time = end_total - start_total
+
+        log.write("\n=== RESUMEN FINAL ===\n")
+        log.write(f"Archivos procesados: {len(files_to_process)}\n")
+        log.write(f"Tiempo total del proceso: {total_time:.4f} segundos\n")
+        log.write("============================================\n")
+
+    return log_path
 
 if __name__ == "__main__":
     
@@ -422,6 +508,8 @@ if __name__ == "__main__":
     file_durations_a8, total_time_a8, total_collisions_a8, hash_size_a8 = create_hash_table_dictionary(folder_path, project_folder)
 
     file_durations_a9, total_time_a9, total_collisions_a9, hash_size_a9 = create_filtered_hash_table_dictionary(folder_path, project_folder)
+
+    create_inverted_index(folder_path, project_folder)
     
     ending_total_time = time.time()
     total_execution_time = ending_total_time - starting_total_time

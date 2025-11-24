@@ -1,0 +1,1022 @@
+=== A11 - Generación de Índice Invertido ===
+Matrícula: 03038135
+
+002.html - 0.0000 segundos
+003.html - 0.0000 segundos
+004.html - 0.0000 segundos
+005.html - 0.0000 segundos
+006.html - 0.0000 segundos
+007.html - 0.0000 segundos
+008.html - 0.0000 segundos
+009.html - 0.0000 segundos
+010.html - 0.0000 segundos
+011.html - 0.0000 segundos
+012.html - 0.0000 segundos
+013.html - 0.0000 segundos
+014.html - 0.0000 segundos
+015.html - 0.0000 segundos
+016.html - 0.0000 segundos
+017.html - 0.0000 segundos
+018.html - 0.0000 segundos
+019.html - 0.0000 segundos
+020.html - 0.0000 segundos
+021.html - 0.0000 segundos
+022.html - 0.0000 segundos
+023.html - 0.0000 segundos
+024.html - 0.0000 segundos
+025.html - 0.0000 segundos
+026.html - 0.0000 segundos
+027.html - 0.0000 segundos
+028.html - 0.0000 segundos
+029.html - 0.0000 segundos
+030.html - 0.0000 segundos
+031.html - 0.0000 segundos
+032.html - 0.0000 segundos
+033.html - 0.0000 segundos
+034.html - 0.0000 segundos
+035.html - 0.0000 segundos
+036.html - 0.0000 segundos
+037.html - 0.0000 segundos
+038.html - 0.0000 segundos
+039.html - 0.0000 segundos
+040.html - 0.0000 segundos
+041.html - 0.0000 segundos
+042.html - 0.0000 segundos
+043.html - 0.0000 segundos
+044.html - 0.0000 segundos
+045.html - 0.0000 segundos
+046.html - 0.0000 segundos
+047.html - 0.0000 segundos
+048.html - 0.0000 segundos
+049.html - 0.0000 segundos
+050.html - 0.0000 segundos
+051.html - 0.0000 segundos
+052.html - 0.0000 segundos
+053.html - 0.0000 segundos
+054.html - 0.0000 segundos
+055.html - 0.0000 segundos
+056.html - 0.0000 segundos
+057.html - 0.0000 segundos
+058.html - 0.0000 segundos
+059.html - 0.0000 segundos
+060.html - 0.0000 segundos
+061.html - 0.0000 segundos
+062.html - 0.0000 segundos
+063.html - 0.0000 segundos
+064.html - 0.0000 segundos
+065.html - 0.0000 segundos
+066.html - 0.0000 segundos
+067.html - 0.0000 segundos
+068.html - 0.0000 segundos
+069.html - 0.0000 segundos
+070.html - 0.0000 segundos
+071.html - 0.0000 segundos
+072.html - 0.0000 segundos
+073.html - 0.0000 segundos
+074.html - 0.0000 segundos
+075.html - 0.0000 segundos
+076.html - 0.0000 segundos
+077.html - 0.0000 segundos
+078.html - 0.0000 segundos
+079.html - 0.0000 segundos
+080.html - 0.0000 segundos
+081.html - 0.0000 segundos
+082.html - 0.0000 segundos
+083.html - 0.0000 segundos
+084.html - 0.0000 segundos
+085.html - 0.0000 segundos
+086.html - 0.0000 segundos
+087.html - 0.0000 segundos
+088.html - 0.0000 segundos
+089.html - 0.0000 segundos
+090.html - 0.0000 segundos
+091.html - 0.0000 segundos
+092.html - 0.0000 segundos
+093.html - 0.0000 segundos
+094.html - 0.0000 segundos
+095.html - 0.0000 segundos
+096.html - 0.0000 segundos
+097.html - 0.0000 segundos
+098.html - 0.0000 segundos
+099.html - 0.0000 segundos
+100.html - 0.0000 segundos
+101.html - 0.0000 segundos
+102.html - 0.0000 segundos
+103.html - 0.0000 segundos
+104.html - 0.0000 segundos
+105.html - 0.0000 segundos
+106.html - 0.0000 segundos
+107.html - 0.0000 segundos
+108.html - 0.0000 segundos
+109.html - 0.0000 segundos
+110.html - 0.0000 segundos
+111.html - 0.0000 segundos
+112.html - 0.0000 segundos
+113.html - 0.0000 segundos
+114.html - 0.0000 segundos
+115.html - 0.0000 segundos
+116.html - 0.0000 segundos
+117.html - 0.0000 segundos
+118.html - 0.0000 segundos
+119.html - 0.0000 segundos
+120.html - 0.0000 segundos
+121.html - 0.0000 segundos
+122.html - 0.0000 segundos
+123.html - 0.0000 segundos
+124.html - 0.0000 segundos
+125.html - 0.0000 segundos
+126.html - 0.0000 segundos
+127.html - 0.0000 segundos
+128.html - 0.0000 segundos
+129.html - 0.0000 segundos
+130.html - 0.0000 segundos
+131.html - 0.0000 segundos
+132.html - 0.0000 segundos
+133.html - 0.0000 segundos
+134.html - 0.0000 segundos
+135.html - 0.0000 segundos
+136.html - 0.0000 segundos
+137.html - 0.0000 segundos
+138.html - 0.0000 segundos
+139.html - 0.0000 segundos
+140.html - 0.0000 segundos
+141.html - 0.0000 segundos
+142.html - 0.0000 segundos
+143.html - 0.0000 segundos
+144.html - 0.0000 segundos
+145.html - 0.0000 segundos
+146.html - 0.0000 segundos
+147.html - 0.0000 segundos
+148.html - 0.0000 segundos
+149.html - 0.0000 segundos
+150.html - 0.0000 segundos
+151.html - 0.0000 segundos
+152.html - 0.0000 segundos
+153.html - 0.0000 segundos
+154.html - 0.0000 segundos
+155.html - 0.0000 segundos
+156.html - 0.0000 segundos
+157.html - 0.0000 segundos
+158.html - 0.0000 segundos
+159.html - 0.0000 segundos
+160.html - 0.0000 segundos
+161.html - 0.0000 segundos
+162.html - 0.0000 segundos
+163.html - 0.0000 segundos
+164.html - 0.0000 segundos
+165.html - 0.0000 segundos
+166.html - 0.0000 segundos
+167.html - 0.0000 segundos
+168.html - 0.0000 segundos
+169.html - 0.0000 segundos
+170.html - 0.0000 segundos
+171.html - 0.0000 segundos
+172.html - 0.0000 segundos
+173.html - 0.0000 segundos
+174.html - 0.0000 segundos
+175.html - 0.0000 segundos
+176.html - 0.0000 segundos
+177.html - 0.0000 segundos
+178.html - 0.0000 segundos
+179.html - 0.0000 segundos
+180.html - 0.0000 segundos
+181.html - 0.0000 segundos
+182.html - 0.0000 segundos
+183.html - 0.0000 segundos
+184.html - 0.0000 segundos
+185.html - 0.0000 segundos
+186.html - 0.0000 segundos
+187.html - 0.0000 segundos
+188.html - 0.0000 segundos
+189.html - 0.0000 segundos
+190.html - 0.0000 segundos
+191.html - 0.0000 segundos
+192.html - 0.0000 segundos
+193.html - 0.0000 segundos
+194.html - 0.0000 segundos
+195.html - 0.0000 segundos
+196.html - 0.0000 segundos
+197.html - 0.0000 segundos
+198.html - 0.0000 segundos
+199.html - 0.0000 segundos
+200.html - 0.0000 segundos
+201.html - 0.0000 segundos
+202.html - 0.0000 segundos
+203.html - 0.0000 segundos
+204.html - 0.0000 segundos
+205.html - 0.0000 segundos
+206.html - 0.0000 segundos
+207.html - 0.0000 segundos
+208.html - 0.0000 segundos
+209.html - 0.0000 segundos
+210.html - 0.0000 segundos
+211.html - 0.0000 segundos
+212.html - 0.0000 segundos
+213.html - 0.0000 segundos
+214.html - 0.0000 segundos
+215.html - 0.0000 segundos
+216.html - 0.0000 segundos
+217.html - 0.0000 segundos
+218.html - 0.0000 segundos
+219.html - 0.0000 segundos
+220.html - 0.0000 segundos
+221.html - 0.0000 segundos
+222.html - 0.0000 segundos
+223.html - 0.0000 segundos
+224.html - 0.0000 segundos
+225.html - 0.0000 segundos
+226.html - 0.0000 segundos
+227.html - 0.0000 segundos
+228.html - 0.0000 segundos
+229.html - 0.0000 segundos
+230.html - 0.0000 segundos
+231.html - 0.0000 segundos
+232.html - 0.0000 segundos
+233.html - 0.0000 segundos
+234.html - 0.0000 segundos
+235.html - 0.0000 segundos
+236.html - 0.0000 segundos
+237.html - 0.0000 segundos
+238.html - 0.0000 segundos
+239.html - 0.0000 segundos
+240.html - 0.0010 segundos
+241.html - 0.0000 segundos
+242.html - 0.0000 segundos
+243.html - 0.0000 segundos
+244.html - 0.0000 segundos
+245.html - 0.0000 segundos
+246.html - 0.0000 segundos
+247.html - 0.0000 segundos
+248.html - 0.0000 segundos
+249.html - 0.0000 segundos
+250.html - 0.0000 segundos
+251.html - 0.0000 segundos
+252.html - 0.0000 segundos
+253.html - 0.0000 segundos
+254.html - 0.0000 segundos
+255.html - 0.0000 segundos
+256.html - 0.0000 segundos
+257.html - 0.0000 segundos
+258.html - 0.0000 segundos
+259.html - 0.0000 segundos
+260.html - 0.0000 segundos
+261.html - 0.0000 segundos
+262.html - 0.0000 segundos
+263.html - 0.0000 segundos
+264.html - 0.0000 segundos
+265.html - 0.0000 segundos
+266.html - 0.0000 segundos
+267.html - 0.0000 segundos
+268.html - 0.0000 segundos
+269.html - 0.0000 segundos
+270.html - 0.0000 segundos
+271.html - 0.0000 segundos
+272.html - 0.0000 segundos
+273.html - 0.0000 segundos
+274.html - 0.0000 segundos
+275.html - 0.0000 segundos
+276.html - 0.0000 segundos
+277.html - 0.0000 segundos
+278.html - 0.0000 segundos
+279.html - 0.0000 segundos
+280.html - 0.0000 segundos
+281.html - 0.0000 segundos
+282.html - 0.0000 segundos
+283.html - 0.0000 segundos
+284.html - 0.0000 segundos
+285.html - 0.0000 segundos
+286.html - 0.0000 segundos
+287.html - 0.0000 segundos
+288.html - 0.0000 segundos
+289.html - 0.0000 segundos
+290.html - 0.0000 segundos
+291.html - 0.0000 segundos
+292.html - 0.0000 segundos
+293.html - 0.0000 segundos
+294.html - 0.0000 segundos
+295.html - 0.0000 segundos
+296.html - 0.0000 segundos
+297.html - 0.0000 segundos
+298.html - 0.0000 segundos
+299.html - 0.0000 segundos
+300.html - 0.0000 segundos
+301.html - 0.0000 segundos
+302.html - 0.0000 segundos
+303.html - 0.0000 segundos
+304.html - 0.0000 segundos
+305.html - 0.0000 segundos
+306.html - 0.0000 segundos
+307.html - 0.0000 segundos
+308.html - 0.0000 segundos
+309.html - 0.0000 segundos
+310.html - 0.0000 segundos
+311.html - 0.0000 segundos
+312.html - 0.0000 segundos
+313.html - 0.0000 segundos
+314.html - 0.0000 segundos
+315.html - 0.0000 segundos
+316.html - 0.0000 segundos
+317.html - 0.0000 segundos
+318.html - 0.0000 segundos
+319.html - 0.0000 segundos
+320.html - 0.0000 segundos
+321.html - 0.0000 segundos
+322.html - 0.0000 segundos
+323.html - 0.0000 segundos
+324.html - 0.0000 segundos
+325.html - 0.0000 segundos
+326.html - 0.0000 segundos
+327.html - 0.0000 segundos
+328.html - 0.0000 segundos
+329.html - 0.0000 segundos
+330.html - 0.0000 segundos
+331.html - 0.0000 segundos
+332.html - 0.0000 segundos
+333.html - 0.0000 segundos
+334.html - 0.0000 segundos
+335.html - 0.0000 segundos
+336.html - 0.0000 segundos
+337.html - 0.0000 segundos
+338.html - 0.0000 segundos
+339.html - 0.0000 segundos
+340.html - 0.0000 segundos
+341.html - 0.0000 segundos
+342.html - 0.0000 segundos
+343.html - 0.0000 segundos
+344.html - 0.0000 segundos
+345.html - 0.0000 segundos
+346.html - 0.0000 segundos
+347.html - 0.0000 segundos
+348.html - 0.0000 segundos
+349.html - 0.0000 segundos
+350.html - 0.0000 segundos
+351.html - 0.0000 segundos
+352.html - 0.0000 segundos
+353.html - 0.0000 segundos
+354.html - 0.0000 segundos
+355.html - 0.0000 segundos
+356.html - 0.0000 segundos
+357.html - 0.0000 segundos
+358.html - 0.0000 segundos
+359.html - 0.0000 segundos
+360.html - 0.0000 segundos
+361.html - 0.0000 segundos
+362.html - 0.0000 segundos
+363.html - 0.0000 segundos
+364.html - 0.0000 segundos
+365.html - 0.0000 segundos
+366.html - 0.0000 segundos
+367.html - 0.0000 segundos
+368.html - 0.0000 segundos
+369.html - 0.0000 segundos
+370.html - 0.0000 segundos
+371.html - 0.0000 segundos
+372.html - 0.0000 segundos
+373.html - 0.0000 segundos
+374.html - 0.0000 segundos
+375.html - 0.0000 segundos
+376.html - 0.0000 segundos
+377.html - 0.0000 segundos
+378.html - 0.0000 segundos
+379.html - 0.0000 segundos
+380.html - 0.0000 segundos
+381.html - 0.0000 segundos
+382.html - 0.0000 segundos
+383.html - 0.0000 segundos
+384.html - 0.0000 segundos
+385.html - 0.0000 segundos
+386.html - 0.0000 segundos
+387.html - 0.0000 segundos
+388.html - 0.0000 segundos
+389.html - 0.0000 segundos
+390.html - 0.0000 segundos
+391.html - 0.0000 segundos
+392.html - 0.0000 segundos
+393.html - 0.0000 segundos
+394.html - 0.0000 segundos
+395.html - 0.0000 segundos
+396.html - 0.0000 segundos
+397.html - 0.0000 segundos
+398.html - 0.0000 segundos
+399.html - 0.0000 segundos
+400.html - 0.0000 segundos
+401.html - 0.0000 segundos
+402.html - 0.0000 segundos
+403.html - 0.0000 segundos
+404.html - 0.0000 segundos
+405.html - 0.0000 segundos
+406.html - 0.0000 segundos
+407.html - 0.0000 segundos
+408.html - 0.0000 segundos
+409.html - 0.0000 segundos
+410.html - 0.0000 segundos
+411.html - 0.0000 segundos
+412.html - 0.0000 segundos
+413.html - 0.0000 segundos
+414.html - 0.0000 segundos
+415.html - 0.0000 segundos
+416.html - 0.0000 segundos
+417.html - 0.0000 segundos
+418.html - 0.0000 segundos
+419.html - 0.0000 segundos
+420.html - 0.0000 segundos
+421.html - 0.0000 segundos
+422.html - 0.0000 segundos
+423.html - 0.0000 segundos
+424.html - 0.0000 segundos
+425.html - 0.0000 segundos
+426.html - 0.0000 segundos
+427.html - 0.0000 segundos
+428.html - 0.0000 segundos
+429.html - 0.0000 segundos
+430.html - 0.0000 segundos
+431.html - 0.0000 segundos
+432.html - 0.0000 segundos
+433.html - 0.0000 segundos
+434.html - 0.0000 segundos
+435.html - 0.0000 segundos
+436.html - 0.0000 segundos
+437.html - 0.0000 segundos
+438.html - 0.0000 segundos
+439.html - 0.0000 segundos
+440.html - 0.0000 segundos
+441.html - 0.0000 segundos
+442.html - 0.0000 segundos
+443.html - 0.0000 segundos
+444.html - 0.0000 segundos
+445.html - 0.0000 segundos
+446.html - 0.0000 segundos
+447.html - 0.0000 segundos
+448.html - 0.0000 segundos
+449.html - 0.0000 segundos
+450.html - 0.0000 segundos
+451.html - 0.0000 segundos
+452.html - 0.0000 segundos
+453.html - 0.0000 segundos
+454.html - 0.0000 segundos
+455.html - 0.0000 segundos
+456.html - 0.0000 segundos
+457.html - 0.0000 segundos
+458.html - 0.0000 segundos
+459.html - 0.0000 segundos
+460.html - 0.0000 segundos
+461.html - 0.0000 segundos
+462.html - 0.0000 segundos
+463.html - 0.0000 segundos
+464.html - 0.0000 segundos
+465.html - 0.0000 segundos
+466.html - 0.0000 segundos
+467.html - 0.0000 segundos
+468.html - 0.0000 segundos
+469.html - 0.0000 segundos
+470.html - 0.0000 segundos
+471.html - 0.0000 segundos
+472.html - 0.0000 segundos
+473.html - 0.0000 segundos
+474.html - 0.0000 segundos
+475.html - 0.0000 segundos
+476.html - 0.0000 segundos
+477.html - 0.0000 segundos
+478.html - 0.0000 segundos
+479.html - 0.0000 segundos
+480.html - 0.0000 segundos
+481.html - 0.0000 segundos
+482.html - 0.0000 segundos
+483.html - 0.0000 segundos
+484.html - 0.0000 segundos
+485.html - 0.0000 segundos
+486.html - 0.0000 segundos
+487.html - 0.0000 segundos
+488.html - 0.0000 segundos
+489.html - 0.0000 segundos
+490.html - 0.0000 segundos
+491.html - 0.0000 segundos
+492.html - 0.0000 segundos
+493.html - 0.0000 segundos
+494.html - 0.0000 segundos
+495.html - 0.0000 segundos
+496.html - 0.0000 segundos
+497.html - 0.0000 segundos
+498.html - 0.0000 segundos
+499.html - 0.0000 segundos
+500.html - 0.0000 segundos
+501.html - 0.0000 segundos
+502.html - 0.0000 segundos
+503.html - 0.0000 segundos
+hard.html - 0.0000 segundos
+medium.html - 0.0000 segundos
+simple.html - 0.0000 segundos
+
+=== Procesando tokens ===
+Tokens de 002.html procesados en 0.0020 segundos
+Tokens de 003.html procesados en 0.0000 segundos
+Tokens de 004.html procesados en 0.0000 segundos
+Tokens de 005.html procesados en 0.0020 segundos
+Tokens de 006.html procesados en 0.0000 segundos
+Tokens de 007.html procesados en 0.0027 segundos
+Tokens de 008.html procesados en 0.0010 segundos
+Tokens de 009.html procesados en 0.0010 segundos
+Tokens de 010.html procesados en 0.0000 segundos
+Tokens de 011.html procesados en 0.0015 segundos
+Tokens de 012.html procesados en 0.0000 segundos
+Tokens de 013.html procesados en 0.0000 segundos
+Tokens de 014.html procesados en 0.0000 segundos
+Tokens de 015.html procesados en 0.0000 segundos
+Tokens de 016.html procesados en 0.0010 segundos
+Tokens de 017.html procesados en 0.0000 segundos
+Tokens de 018.html procesados en 0.0000 segundos
+Tokens de 019.html procesados en 0.0020 segundos
+Tokens de 020.html procesados en 0.0010 segundos
+Tokens de 021.html procesados en 0.0000 segundos
+Tokens de 022.html procesados en 0.0000 segundos
+Tokens de 023.html procesados en 0.0000 segundos
+Tokens de 024.html procesados en 0.0017 segundos
+Tokens de 025.html procesados en 0.0000 segundos
+Tokens de 026.html procesados en 0.0000 segundos
+Tokens de 027.html procesados en 0.0030 segundos
+Tokens de 028.html procesados en 0.0015 segundos
+Tokens de 029.html procesados en 0.0010 segundos
+Tokens de 030.html procesados en 0.0010 segundos
+Tokens de 031.html procesados en 0.0015 segundos
+Tokens de 032.html procesados en 0.0000 segundos
+Tokens de 033.html procesados en 0.0000 segundos
+Tokens de 034.html procesados en 0.0010 segundos
+Tokens de 035.html procesados en 0.0000 segundos
+Tokens de 036.html procesados en 0.0000 segundos
+Tokens de 037.html procesados en 0.0015 segundos
+Tokens de 038.html procesados en 0.0000 segundos
+Tokens de 039.html procesados en 0.0010 segundos
+Tokens de 040.html procesados en 0.0010 segundos
+Tokens de 041.html procesados en 0.0010 segundos
+Tokens de 042.html procesados en 0.0000 segundos
+Tokens de 043.html procesados en 0.0065 segundos
+Tokens de 044.html procesados en 0.0011 segundos
+Tokens de 045.html procesados en 0.0000 segundos
+Tokens de 046.html procesados en 0.0000 segundos
+Tokens de 047.html procesados en 0.0010 segundos
+Tokens de 048.html procesados en 0.0010 segundos
+Tokens de 049.html procesados en 0.0000 segundos
+Tokens de 050.html procesados en 0.0010 segundos
+Tokens de 051.html procesados en 0.0010 segundos
+Tokens de 052.html procesados en 0.0000 segundos
+Tokens de 053.html procesados en 0.0000 segundos
+Tokens de 054.html procesados en 0.0010 segundos
+Tokens de 055.html procesados en 0.0000 segundos
+Tokens de 056.html procesados en 0.0000 segundos
+Tokens de 057.html procesados en 0.0000 segundos
+Tokens de 058.html procesados en 0.0010 segundos
+Tokens de 059.html procesados en 0.0000 segundos
+Tokens de 060.html procesados en 0.0000 segundos
+Tokens de 061.html procesados en 0.0010 segundos
+Tokens de 062.html procesados en 0.0000 segundos
+Tokens de 063.html procesados en 0.0000 segundos
+Tokens de 064.html procesados en 0.0000 segundos
+Tokens de 065.html procesados en 0.0000 segundos
+Tokens de 066.html procesados en 0.0017 segundos
+Tokens de 067.html procesados en 0.0000 segundos
+Tokens de 068.html procesados en 0.0010 segundos
+Tokens de 069.html procesados en 0.0000 segundos
+Tokens de 070.html procesados en 0.0000 segundos
+Tokens de 071.html procesados en 0.0000 segundos
+Tokens de 072.html procesados en 0.0010 segundos
+Tokens de 073.html procesados en 0.0000 segundos
+Tokens de 074.html procesados en 0.0000 segundos
+Tokens de 075.html procesados en 0.0010 segundos
+Tokens de 076.html procesados en 0.0015 segundos
+Tokens de 077.html procesados en 0.0010 segundos
+Tokens de 078.html procesados en 0.0000 segundos
+Tokens de 079.html procesados en 0.0000 segundos
+Tokens de 080.html procesados en 0.0010 segundos
+Tokens de 081.html procesados en 0.0000 segundos
+Tokens de 082.html procesados en 0.0015 segundos
+Tokens de 083.html procesados en 0.0000 segundos
+Tokens de 084.html procesados en 0.0000 segundos
+Tokens de 085.html procesados en 0.0010 segundos
+Tokens de 086.html procesados en 0.0000 segundos
+Tokens de 087.html procesados en 0.0015 segundos
+Tokens de 088.html procesados en 0.0000 segundos
+Tokens de 089.html procesados en 0.0000 segundos
+Tokens de 090.html procesados en 0.0010 segundos
+Tokens de 091.html procesados en 0.0000 segundos
+Tokens de 092.html procesados en 0.0000 segundos
+Tokens de 093.html procesados en 0.0000 segundos
+Tokens de 094.html procesados en 0.0010 segundos
+Tokens de 095.html procesados en 0.0000 segundos
+Tokens de 096.html procesados en 0.0000 segundos
+Tokens de 097.html procesados en 0.0000 segundos
+Tokens de 098.html procesados en 0.0010 segundos
+Tokens de 099.html procesados en 0.0010 segundos
+Tokens de 100.html procesados en 0.0000 segundos
+Tokens de 101.html procesados en 0.0010 segundos
+Tokens de 102.html procesados en 0.0000 segundos
+Tokens de 103.html procesados en 0.0000 segundos
+Tokens de 104.html procesados en 0.0000 segundos
+Tokens de 105.html procesados en 0.0010 segundos
+Tokens de 106.html procesados en 0.0000 segundos
+Tokens de 107.html procesados en 0.0000 segundos
+Tokens de 108.html procesados en 0.0000 segundos
+Tokens de 109.html procesados en 0.0015 segundos
+Tokens de 110.html procesados en 0.0000 segundos
+Tokens de 111.html procesados en 0.0000 segundos
+Tokens de 112.html procesados en 0.0000 segundos
+Tokens de 113.html procesados en 0.0000 segundos
+Tokens de 114.html procesados en 0.0010 segundos
+Tokens de 115.html procesados en 0.0000 segundos
+Tokens de 116.html procesados en 0.0000 segundos
+Tokens de 117.html procesados en 0.0010 segundos
+Tokens de 118.html procesados en 0.0011 segundos
+Tokens de 119.html procesados en 0.0010 segundos
+Tokens de 120.html procesados en 0.0000 segundos
+Tokens de 121.html procesados en 0.0000 segundos
+Tokens de 122.html procesados en 0.0010 segundos
+Tokens de 123.html procesados en 0.0000 segundos
+Tokens de 124.html procesados en 0.0000 segundos
+Tokens de 125.html procesados en 0.0000 segundos
+Tokens de 126.html procesados en 0.0015 segundos
+Tokens de 127.html procesados en 0.0000 segundos
+Tokens de 128.html procesados en 0.0000 segundos
+Tokens de 129.html procesados en 0.0000 segundos
+Tokens de 130.html procesados en 0.0000 segundos
+Tokens de 131.html procesados en 0.0000 segundos
+Tokens de 132.html procesados en 0.0010 segundos
+Tokens de 133.html procesados en 0.0000 segundos
+Tokens de 134.html procesados en 0.0000 segundos
+Tokens de 135.html procesados en 0.0000 segundos
+Tokens de 136.html procesados en 0.0010 segundos
+Tokens de 137.html procesados en 0.0035 segundos
+Tokens de 138.html procesados en 0.0011 segundos
+Tokens de 139.html procesados en 0.0000 segundos
+Tokens de 140.html procesados en 0.0010 segundos
+Tokens de 141.html procesados en 0.0000 segundos
+Tokens de 142.html procesados en 0.0000 segundos
+Tokens de 143.html procesados en 0.0010 segundos
+Tokens de 144.html procesados en 0.0000 segundos
+Tokens de 145.html procesados en 0.0010 segundos
+Tokens de 146.html procesados en 0.0010 segundos
+Tokens de 147.html procesados en 0.0010 segundos
+Tokens de 148.html procesados en 0.0000 segundos
+Tokens de 149.html procesados en 0.0000 segundos
+Tokens de 150.html procesados en 0.0010 segundos
+Tokens de 151.html procesados en 0.0000 segundos
+Tokens de 152.html procesados en 0.0025 segundos
+Tokens de 153.html procesados en 0.0000 segundos
+Tokens de 154.html procesados en 0.0010 segundos
+Tokens de 155.html procesados en 0.0000 segundos
+Tokens de 156.html procesados en 0.0020 segundos
+Tokens de 157.html procesados en 0.0000 segundos
+Tokens de 158.html procesados en 0.0000 segundos
+Tokens de 159.html procesados en 0.0015 segundos
+Tokens de 160.html procesados en 0.0000 segundos
+Tokens de 161.html procesados en 0.0010 segundos
+Tokens de 162.html procesados en 0.0000 segundos
+Tokens de 163.html procesados en 0.0010 segundos
+Tokens de 164.html procesados en 0.0000 segundos
+Tokens de 165.html procesados en 0.0010 segundos
+Tokens de 166.html procesados en 0.0000 segundos
+Tokens de 167.html procesados en 0.0010 segundos
+Tokens de 168.html procesados en 0.0005 segundos
+Tokens de 169.html procesados en 0.0000 segundos
+Tokens de 170.html procesados en 0.0000 segundos
+Tokens de 171.html procesados en 0.0000 segundos
+Tokens de 172.html procesados en 0.0010 segundos
+Tokens de 173.html procesados en 0.0000 segundos
+Tokens de 174.html procesados en 0.0000 segundos
+Tokens de 175.html procesados en 0.0013 segundos
+Tokens de 176.html procesados en 0.0010 segundos
+Tokens de 177.html procesados en 0.0000 segundos
+Tokens de 178.html procesados en 0.0000 segundos
+Tokens de 179.html procesados en 0.0025 segundos
+Tokens de 180.html procesados en 0.0010 segundos
+Tokens de 181.html procesados en 0.0010 segundos
+Tokens de 182.html procesados en 0.0015 segundos
+Tokens de 183.html procesados en 0.0010 segundos
+Tokens de 184.html procesados en 0.0000 segundos
+Tokens de 185.html procesados en 0.0000 segundos
+Tokens de 186.html procesados en 0.0000 segundos
+Tokens de 187.html procesados en 0.0010 segundos
+Tokens de 188.html procesados en 0.0000 segundos
+Tokens de 189.html procesados en 0.0015 segundos
+Tokens de 190.html procesados en 0.0000 segundos
+Tokens de 191.html procesados en 0.0010 segundos
+Tokens de 192.html procesados en 0.0000 segundos
+Tokens de 193.html procesados en 0.0010 segundos
+Tokens de 194.html procesados en 0.0010 segundos
+Tokens de 195.html procesados en 0.0000 segundos
+Tokens de 196.html procesados en 0.0000 segundos
+Tokens de 197.html procesados en 0.0010 segundos
+Tokens de 198.html procesados en 0.0000 segundos
+Tokens de 199.html procesados en 0.0000 segundos
+Tokens de 200.html procesados en 0.0000 segundos
+Tokens de 201.html procesados en 0.0010 segundos
+Tokens de 202.html procesados en 0.0000 segundos
+Tokens de 203.html procesados en 0.0000 segundos
+Tokens de 204.html procesados en 0.0000 segundos
+Tokens de 205.html procesados en 0.0015 segundos
+Tokens de 206.html procesados en 0.0000 segundos
+Tokens de 207.html procesados en 0.0010 segundos
+Tokens de 208.html procesados en 0.0000 segundos
+Tokens de 209.html procesados en 0.0000 segundos
+Tokens de 210.html procesados en 0.0010 segundos
+Tokens de 211.html procesados en 0.0000 segundos
+Tokens de 212.html procesados en 0.0005 segundos
+Tokens de 213.html procesados en 0.0010 segundos
+Tokens de 214.html procesados en 0.0010 segundos
+Tokens de 215.html procesados en 0.0000 segundos
+Tokens de 216.html procesados en 0.0000 segundos
+Tokens de 217.html procesados en 0.0000 segundos
+Tokens de 218.html procesados en 0.0000 segundos
+Tokens de 219.html procesados en 0.0000 segundos
+Tokens de 220.html procesados en 0.0000 segundos
+Tokens de 221.html procesados en 0.0015 segundos
+Tokens de 222.html procesados en 0.0000 segundos
+Tokens de 223.html procesados en 0.0010 segundos
+Tokens de 224.html procesados en 0.0000 segundos
+Tokens de 225.html procesados en 0.0000 segundos
+Tokens de 226.html procesados en 0.0010 segundos
+Tokens de 227.html procesados en 0.0000 segundos
+Tokens de 228.html procesados en 0.0000 segundos
+Tokens de 229.html procesados en 0.0010 segundos
+Tokens de 230.html procesados en 0.0000 segundos
+Tokens de 231.html procesados en 0.0000 segundos
+Tokens de 232.html procesados en 0.0010 segundos
+Tokens de 233.html procesados en 0.0005 segundos
+Tokens de 234.html procesados en 0.0020 segundos
+Tokens de 235.html procesados en 0.0010 segundos
+Tokens de 236.html procesados en 0.0010 segundos
+Tokens de 237.html procesados en 0.0000 segundos
+Tokens de 238.html procesados en 0.0000 segundos
+Tokens de 239.html procesados en 0.0015 segundos
+Tokens de 240.html procesados en 0.0010 segundos
+Tokens de 241.html procesados en 0.0010 segundos
+Tokens de 242.html procesados en 0.0010 segundos
+Tokens de 243.html procesados en 0.0015 segundos
+Tokens de 244.html procesados en 0.0010 segundos
+Tokens de 245.html procesados en 0.0010 segundos
+Tokens de 246.html procesados en 0.0010 segundos
+Tokens de 247.html procesados en 0.0025 segundos
+Tokens de 248.html procesados en 0.0010 segundos
+Tokens de 249.html procesados en 0.0030 segundos
+Tokens de 250.html procesados en 0.0016 segundos
+Tokens de 251.html procesados en 0.0010 segundos
+Tokens de 252.html procesados en 0.0010 segundos
+Tokens de 253.html procesados en 0.0000 segundos
+Tokens de 254.html procesados en 0.0010 segundos
+Tokens de 255.html procesados en 0.0000 segundos
+Tokens de 256.html procesados en 0.0015 segundos
+Tokens de 257.html procesados en 0.0000 segundos
+Tokens de 258.html procesados en 0.0010 segundos
+Tokens de 259.html procesados en 0.0010 segundos
+Tokens de 260.html procesados en 0.0025 segundos
+Tokens de 261.html procesados en 0.0000 segundos
+Tokens de 262.html procesados en 0.0010 segundos
+Tokens de 263.html procesados en 0.0005 segundos
+Tokens de 264.html procesados en 0.0000 segundos
+Tokens de 265.html procesados en 0.0010 segundos
+Tokens de 266.html procesados en 0.0010 segundos
+Tokens de 267.html procesados en 0.0010 segundos
+Tokens de 268.html procesados en 0.0010 segundos
+Tokens de 269.html procesados en 0.0020 segundos
+Tokens de 270.html procesados en 0.0000 segundos
+Tokens de 271.html procesados en 0.0000 segundos
+Tokens de 272.html procesados en 0.0025 segundos
+Tokens de 273.html procesados en 0.0000 segundos
+Tokens de 274.html procesados en 0.0015 segundos
+Tokens de 275.html procesados en 0.0000 segundos
+Tokens de 276.html procesados en 0.0010 segundos
+Tokens de 277.html procesados en 0.0010 segundos
+Tokens de 278.html procesados en 0.0010 segundos
+Tokens de 279.html procesados en 0.0030 segundos
+Tokens de 280.html procesados en 0.0025 segundos
+Tokens de 281.html procesados en 0.0020 segundos
+Tokens de 282.html procesados en 0.0020 segundos
+Tokens de 283.html procesados en 0.0025 segundos
+Tokens de 284.html procesados en 0.0010 segundos
+Tokens de 285.html procesados en 0.0000 segundos
+Tokens de 286.html procesados en 0.0015 segundos
+Tokens de 287.html procesados en 0.0020 segundos
+Tokens de 288.html procesados en 0.0005 segundos
+Tokens de 289.html procesados en 0.0020 segundos
+Tokens de 290.html procesados en 0.0010 segundos
+Tokens de 291.html procesados en 0.0010 segundos
+Tokens de 292.html procesados en 0.0020 segundos
+Tokens de 293.html procesados en 0.0000 segundos
+Tokens de 294.html procesados en 0.0000 segundos
+Tokens de 295.html procesados en 0.0015 segundos
+Tokens de 296.html procesados en 0.0000 segundos
+Tokens de 297.html procesados en 0.0010 segundos
+Tokens de 298.html procesados en 0.0075 segundos
+Tokens de 299.html procesados en 0.0015 segundos
+Tokens de 300.html procesados en 0.0010 segundos
+Tokens de 301.html procesados en 0.0010 segundos
+Tokens de 302.html procesados en 0.0011 segundos
+Tokens de 303.html procesados en 0.0030 segundos
+Tokens de 304.html procesados en 0.0030 segundos
+Tokens de 305.html procesados en 0.0010 segundos
+Tokens de 306.html procesados en 0.0005 segundos
+Tokens de 307.html procesados en 0.0025 segundos
+Tokens de 308.html procesados en 0.0020 segundos
+Tokens de 309.html procesados en 0.0015 segundos
+Tokens de 310.html procesados en 0.0020 segundos
+Tokens de 311.html procesados en 0.0000 segundos
+Tokens de 312.html procesados en 0.0015 segundos
+Tokens de 313.html procesados en 0.0000 segundos
+Tokens de 314.html procesados en 0.0000 segundos
+Tokens de 315.html procesados en 0.0015 segundos
+Tokens de 316.html procesados en 0.0010 segundos
+Tokens de 317.html procesados en 0.0000 segundos
+Tokens de 318.html procesados en 0.0010 segundos
+Tokens de 319.html procesados en 0.0000 segundos
+Tokens de 320.html procesados en 0.0010 segundos
+Tokens de 321.html procesados en 0.0000 segundos
+Tokens de 322.html procesados en 0.0000 segundos
+Tokens de 323.html procesados en 0.0015 segundos
+Tokens de 324.html procesados en 0.0010 segundos
+Tokens de 325.html procesados en 0.0020 segundos
+Tokens de 326.html procesados en 0.0025 segundos
+Tokens de 327.html procesados en 0.0010 segundos
+Tokens de 328.html procesados en 0.0020 segundos
+Tokens de 329.html procesados en 0.0015 segundos
+Tokens de 330.html procesados en 0.0010 segundos
+Tokens de 331.html procesados en 0.0030 segundos
+Tokens de 332.html procesados en 0.0005 segundos
+Tokens de 333.html procesados en 0.0030 segundos
+Tokens de 334.html procesados en 0.0025 segundos
+Tokens de 335.html procesados en 0.0010 segundos
+Tokens de 336.html procesados en 0.0045 segundos
+Tokens de 337.html procesados en 0.0020 segundos
+Tokens de 338.html procesados en 0.0055 segundos
+Tokens de 339.html procesados en 0.0038 segundos
+Tokens de 340.html procesados en 0.0035 segundos
+Tokens de 341.html procesados en 0.0035 segundos
+Tokens de 342.html procesados en 0.0035 segundos
+Tokens de 343.html procesados en 0.0035 segundos
+Tokens de 344.html procesados en 0.0045 segundos
+Tokens de 345.html procesados en 0.0030 segundos
+Tokens de 346.html procesados en 0.0035 segundos
+Tokens de 347.html procesados en 0.0035 segundos
+Tokens de 348.html procesados en 0.0045 segundos
+Tokens de 349.html procesados en 0.0066 segundos
+Tokens de 350.html procesados en 0.0045 segundos
+Tokens de 351.html procesados en 0.0045 segundos
+Tokens de 352.html procesados en 0.0030 segundos
+Tokens de 353.html procesados en 0.0015 segundos
+Tokens de 354.html procesados en 0.0045 segundos
+Tokens de 355.html procesados en 0.0045 segundos
+Tokens de 356.html procesados en 0.0010 segundos
+Tokens de 357.html procesados en 0.0010 segundos
+Tokens de 358.html procesados en 0.0035 segundos
+Tokens de 359.html procesados en 0.0035 segundos
+Tokens de 360.html procesados en 0.0040 segundos
+Tokens de 361.html procesados en 0.0040 segundos
+Tokens de 362.html procesados en 0.0030 segundos
+Tokens de 363.html procesados en 0.0030 segundos
+Tokens de 364.html procesados en 0.0050 segundos
+Tokens de 365.html procesados en 0.0050 segundos
+Tokens de 366.html procesados en 0.0036 segundos
+Tokens de 367.html procesados en 0.0025 segundos
+Tokens de 368.html procesados en 0.0040 segundos
+Tokens de 369.html procesados en 0.0035 segundos
+Tokens de 370.html procesados en 0.0041 segundos
+Tokens de 371.html procesados en 0.0045 segundos
+Tokens de 372.html procesados en 0.0036 segundos
+Tokens de 373.html procesados en 0.0050 segundos
+Tokens de 374.html procesados en 0.0025 segundos
+Tokens de 375.html procesados en 0.0035 segundos
+Tokens de 376.html procesados en 0.0045 segundos
+Tokens de 377.html procesados en 0.0030 segundos
+Tokens de 378.html procesados en 0.0010 segundos
+Tokens de 379.html procesados en 0.0015 segundos
+Tokens de 380.html procesados en 0.0020 segundos
+Tokens de 381.html procesados en 0.0020 segundos
+Tokens de 382.html procesados en 0.0019 segundos
+Tokens de 383.html procesados en 0.0020 segundos
+Tokens de 384.html procesados en 0.0010 segundos
+Tokens de 385.html procesados en 0.0025 segundos
+Tokens de 386.html procesados en 0.0010 segundos
+Tokens de 387.html procesados en 0.0015 segundos
+Tokens de 388.html procesados en 0.0015 segundos
+Tokens de 389.html procesados en 0.0020 segundos
+Tokens de 390.html procesados en 0.0010 segundos
+Tokens de 391.html procesados en 0.0025 segundos
+Tokens de 392.html procesados en 0.0020 segundos
+Tokens de 393.html procesados en 0.0010 segundos
+Tokens de 394.html procesados en 0.0027 segundos
+Tokens de 395.html procesados en 0.0020 segundos
+Tokens de 396.html procesados en 0.0000 segundos
+Tokens de 397.html procesados en 0.0025 segundos
+Tokens de 398.html procesados en 0.0025 segundos
+Tokens de 399.html procesados en 0.0020 segundos
+Tokens de 400.html procesados en 0.0005 segundos
+Tokens de 401.html procesados en 0.0020 segundos
+Tokens de 402.html procesados en 0.0010 segundos
+Tokens de 403.html procesados en 0.0030 segundos
+Tokens de 404.html procesados en 0.0015 segundos
+Tokens de 405.html procesados en 0.0025 segundos
+Tokens de 406.html procesados en 0.0010 segundos
+Tokens de 407.html procesados en 0.0040 segundos
+Tokens de 408.html procesados en 0.0010 segundos
+Tokens de 409.html procesados en 0.0000 segundos
+Tokens de 410.html procesados en 0.0035 segundos
+Tokens de 411.html procesados en 0.0023 segundos
+Tokens de 412.html procesados en 0.0020 segundos
+Tokens de 413.html procesados en 0.0020 segundos
+Tokens de 414.html procesados en 0.0020 segundos
+Tokens de 415.html procesados en 0.0015 segundos
+Tokens de 416.html procesados en 0.0020 segundos
+Tokens de 417.html procesados en 0.0010 segundos
+Tokens de 418.html procesados en 0.0026 segundos
+Tokens de 419.html procesados en 0.0000 segundos
+Tokens de 420.html procesados en 0.0010 segundos
+Tokens de 421.html procesados en 0.0025 segundos
+Tokens de 422.html procesados en 0.0015 segundos
+Tokens de 423.html procesados en 0.0020 segundos
+Tokens de 424.html procesados en 0.0010 segundos
+Tokens de 425.html procesados en 0.0020 segundos
+Tokens de 426.html procesados en 0.0010 segundos
+Tokens de 427.html procesados en 0.0000 segundos
+Tokens de 428.html procesados en 0.0015 segundos
+Tokens de 429.html procesados en 0.0020 segundos
+Tokens de 430.html procesados en 0.0000 segundos
+Tokens de 431.html procesados en 0.0045 segundos
+Tokens de 432.html procesados en 0.0010 segundos
+Tokens de 433.html procesados en 0.0397 segundos
+Tokens de 434.html procesados en 0.0321 segundos
+Tokens de 435.html procesados en 0.0468 segundos
+Tokens de 436.html procesados en 0.0241 segundos
+Tokens de 437.html procesados en 0.0298 segundos
+Tokens de 438.html procesados en 0.0020 segundos
+Tokens de 439.html procesados en 0.0005 segundos
+Tokens de 440.html procesados en 0.0010 segundos
+Tokens de 441.html procesados en 0.0000 segundos
+Tokens de 442.html procesados en 0.0010 segundos
+Tokens de 443.html procesados en 0.0010 segundos
+Tokens de 444.html procesados en 0.0010 segundos
+Tokens de 445.html procesados en 0.0020 segundos
+Tokens de 446.html procesados en 0.0015 segundos
+Tokens de 447.html procesados en 0.0000 segundos
+Tokens de 448.html procesados en 0.0010 segundos
+Tokens de 449.html procesados en 0.0000 segundos
+Tokens de 450.html procesados en 0.0000 segundos
+Tokens de 451.html procesados en 0.0010 segundos
+Tokens de 452.html procesados en 0.0000 segundos
+Tokens de 453.html procesados en 0.0000 segundos
+Tokens de 454.html procesados en 0.0015 segundos
+Tokens de 455.html procesados en 0.0000 segundos
+Tokens de 456.html procesados en 0.0010 segundos
+Tokens de 457.html procesados en 0.0000 segundos
+Tokens de 458.html procesados en 0.0015 segundos
+Tokens de 459.html procesados en 0.0020 segundos
+Tokens de 460.html procesados en 0.0010 segundos
+Tokens de 461.html procesados en 0.0010 segundos
+Tokens de 462.html procesados en 0.0039 segundos
+Tokens de 463.html procesados en 0.0010 segundos
+Tokens de 464.html procesados en 0.0015 segundos
+Tokens de 465.html procesados en 0.0010 segundos
+Tokens de 466.html procesados en 0.0000 segundos
+Tokens de 467.html procesados en 0.0010 segundos
+Tokens de 468.html procesados en 0.0000 segundos
+Tokens de 469.html procesados en 0.0000 segundos
+Tokens de 470.html procesados en 0.0000 segundos
+Tokens de 471.html procesados en 0.0015 segundos
+Tokens de 472.html procesados en 0.0000 segundos
+Tokens de 473.html procesados en 0.0000 segundos
+Tokens de 474.html procesados en 0.0010 segundos
+Tokens de 475.html procesados en 0.0000 segundos
+Tokens de 476.html procesados en 0.0010 segundos
+Tokens de 477.html procesados en 0.0000 segundos
+Tokens de 478.html procesados en 0.0005 segundos
+Tokens de 479.html procesados en 0.0000 segundos
+Tokens de 480.html procesados en 0.0000 segundos
+Tokens de 481.html procesados en 0.0010 segundos
+Tokens de 482.html procesados en 0.0000 segundos
+Tokens de 483.html procesados en 0.0000 segundos
+Tokens de 484.html procesados en 0.0010 segundos
+Tokens de 485.html procesados en 0.0000 segundos
+Tokens de 486.html procesados en 0.0000 segundos
+Tokens de 487.html procesados en 0.0010 segundos
+Tokens de 488.html procesados en 0.0000 segundos
+Tokens de 489.html procesados en 0.0000 segundos
+Tokens de 490.html procesados en 0.0000 segundos
+Tokens de 491.html procesados en 0.0000 segundos
+Tokens de 492.html procesados en 0.0020 segundos
+Tokens de 493.html procesados en 0.0000 segundos
+Tokens de 494.html procesados en 0.0000 segundos
+Tokens de 495.html procesados en 0.0010 segundos
+Tokens de 496.html procesados en 0.0000 segundos
+Tokens de 497.html procesados en 0.0000 segundos
+Tokens de 498.html procesados en 0.0025 segundos
+Tokens de 499.html procesados en 0.0015 segundos
+Tokens de 500.html procesados en 0.0010 segundos
+Tokens de 501.html procesados en 0.0010 segundos
+Tokens de 502.html procesados en 0.0000 segundos
+Tokens de 503.html procesados en 0.0015 segundos
+Tokens de hard.html procesados en 0.0000 segundos
+Tokens de medium.html procesados en 0.0000 segundos
+Tokens de simple.html procesados en 0.0000 segundos
+
+=== Creando Posting y Diccionario ===
+
+=== RESUMEN FINAL ===
+Archivos procesados: 505
+Tiempo total del proceso: 1.3407 segundos
+============================================
