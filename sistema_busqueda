@@ -1,9 +1,12 @@
 import os
+import sys
 import time
 import re
-import time
 from collections import Counter, defaultdict
 
+# ============================================================================
+# CONFIGURACIÓN GLOBAL
+# ============================================================================
 project_folder = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1'
 folder_path = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1/CS13309_Archivos_HTML/Files'
 output_folder = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1/CS13309_Archivos_TEXT'
@@ -14,7 +17,12 @@ HASH_TABLE_SIZE = 20000
 EMPTY_SLOT_INDICATOR = "vacio"
 EMPTY_POSTING_POSITION = -1
 
+# ============================================================================
+# FUNCIONES AUXILIARES
+# ============================================================================
+
 def extract_words(text):
+    """Extrae palabras del texto usando expresión regular"""
     words = re.findall(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9\-]+", text)
     return words
 
@@ -25,18 +33,33 @@ def hash_function(key, size):
         hash_value = ((hash_value << 5) + hash_value) + ord(char)
     return hash_value % size
 
+def load_stoplist(stoplist_path):
+    """Carga la stoplist desde un archivo"""
+    stopwords = set()
+    try:
+        with open(stoplist_path, 'r', encoding='utf-8') as f:
+            content = f.read().lower()
+            stopwords.update(re.split(r'\s+|,', content))
+            stopwords.discard('')
+    except FileNotFoundError:
+        print(f"ADVERTENCIA: Archivo de stoplist no encontrado en {stoplist_path}")
+    except Exception as e:
+        print(f"ADVERTENCIA: Error al leer stoplist: {e}")
+    return stopwords
+
+# ============================================================================
+# FUNCIONES DE ACTIVIDADES PREVIAS (A1-A9)
+# ============================================================================
+
 def process_words(cleaned_text, output_file):
     start_processing = time.time()
-
     words = extract_words(cleaned_text)
     words = [w.lower() for w in words]
     counter = Counter(words)
     sorted_words = sorted(counter.items())
-
     with open(output_file, "w", encoding="utf-8") as f:
         for word, count in sorted_words:
             f.write(f"{word} se repite: {count} veces.\n")
-
     end_processing = time.time()
     processing_time = end_processing - start_processing
     return processing_time
@@ -45,47 +68,36 @@ def list_html_files(folder_path, output_folder):
     reading_results = []
     cleanning_results = []
     words_results = []
-
     try:
         files = os.listdir(folder_path)
         html_files = [f for f in files if f.endswith('.html')]
-
         for file in html_files:
             path = os.path.join(folder_path, file)
-
             start_reading = time.time()
             with open(path, 'r', encoding="latin-1") as f:
                 content = f.read()
             end_reading = time.time()
             reading_duration = end_reading - start_reading
-
             start_cleanning = time.time()
             cleaned_text = re.sub(r'<.*?>', '', content)
-            
             output_file = os.path.join(output_folder, file.replace(".html", ".txt"))
             with open(output_file, "w", encoding="utf-8") as out:
                 out.write(cleaned_text)
             end_cleanning = time.time()
             cleanning_duration = end_cleanning - start_cleanning
-
             words_file = os.path.join(output_folder, file.replace(".html", "_alphabetic_order_words.txt"))
             words_duration = process_words(cleaned_text, words_file)
-
             reading_results.append((file, reading_duration))
             cleanning_results.append((file, cleanning_duration))
             words_results.append((file, words_duration))
-
         return reading_results, cleanning_results, words_results
-    
     except Exception as e:
         print(f"Ocurrió un error en list_html_files: {e}")
         return [], [], []
 
-
 def create_consolidated_words_file(output_folder, project_folder):
     file_durations = []
     all_words = []
-
     txt_files = [f for f in os.listdir(output_folder) if f.endswith('.txt') and not f.endswith('_alphabetic_order_words.txt')]
     for file in txt_files:
         start_file = time.time()
@@ -97,17 +109,14 @@ def create_consolidated_words_file(output_folder, project_folder):
         end_file = time.time()
         duration = end_file - start_file
         file_durations.append((file, duration))
-
     start_sort = time.time()
     all_words_sorted = sorted(all_words)
     end_sort = time.time()
     sort_duration = end_sort - start_sort
-
     consolidated_file = os.path.join(project_folder, "consolidado_palabras.txt")
     with open(consolidated_file, "w", encoding="utf-8") as f:
         for word in all_words_sorted:
             f.write(f"{word}\n")
-
     total_consolidated_duration = sum(d for _, d in file_durations) + sort_duration
     return file_durations, sort_duration, total_consolidated_duration
 
@@ -115,12 +124,9 @@ def create_specific_consolidated_file(folder_path, project_folder):
     files_to_process = ['simple.html', 'medium.html', 'hard.html', '049.html']
     all_words = []
     file_durations = []
-
     start_total = time.time()
-
     for filename in files_to_process:
         path = os.path.join(folder_path, filename)
-
         start_file = time.time()
         try:
             with open(path, "r", encoding="latin-1") as f:
@@ -132,25 +138,19 @@ def create_specific_consolidated_file(folder_path, project_folder):
             print(f"Error en A5 al procesar {filename}: {e}")
         end_file = time.time()
         file_durations.append((filename, end_file - start_file))
-
     counter = Counter(all_words)
-
     start_sort = time.time()
     all_words_sorted = sorted(counter.items())
     end_sort = time.time()
     sort_duration = end_sort - start_sort
-    
     end_total = time.time()
     total_time = end_total - start_total
-
     output_file = os.path.join(project_folder, "a5_03038135.txt")
     with open(output_file, "w", encoding="utf-8") as archivo:
         for word, count in all_words_sorted:
             archivo.write(f"{word} {count}\n")
-
         archivo.write(f"Tiempo total de procesamiento de palabras y conteo (sin incluir archivos individuales): {sort_duration:.4f} segundos\n")
         archivo.write(f"Tiempo total de ejecucion: {total_time:.4f} segundos\n")
-
     return file_durations, sort_duration, total_time
 
 def create_dictionary_with_file_count(folder_path, project_folder):
@@ -158,133 +158,99 @@ def create_dictionary_with_file_count(folder_path, project_folder):
     token_counter = Counter()
     token_files = defaultdict(set)
     file_durations = []
-
     start_total = time.time()
-
     for filename in files_to_process:
         path = os.path.join(folder_path, filename)
-
         start_file = time.time()
         try:
             with open(path, "r", encoding="latin-1") as f:
                 text = f.read()
                 cleaned_text = re.sub(r'<.*?>', '', text)
                 words = extract_words(cleaned_text)
-
                 for w in words:
                     word = w.lower()
                     token_counter[word] += 1
                     token_files[word].add(filename)
         except Exception as e:
             print(f"Error en A6 al procesar {filename}: {e}")
-            
         end_file = time.time()
         file_durations.append((filename, end_file - start_file))
-
     end_total = time.time()
     total_time = end_total - start_total
-
     output_file = os.path.join(project_folder, "a6_dictionary.txt")
     with open(output_file, "w", encoding="utf-8") as archivo:
         for token, count in sorted(token_counter.items()):
             archivo.write(f"{token};{count};{len(token_files[token])}\n")
-
     log_file = os.path.join(project_folder, "a6_03038135.txt")
     with open(log_file, "w", encoding="utf-8") as log:
         for filename, duration in file_durations:
             log.write(f"{filename}            {duration:.4f} \n")
         log.write(f"Tiempo total de ejecucion: {total_time:.4f} segundos\n")        
-
     return file_durations, total_time
 
 def create_copy_log(folder_path, project_folder):
     files_to_process = [f for f in os.listdir(folder_path) if f.endswith(".html")]
     file_durations = []
-
     start_total = time.time()
-
     for filename in sorted(files_to_process):
         path = os.path.join(folder_path, filename)
-
         start_file = time.time()
         try:
             with open(path, "r", encoding="latin-1") as f:
                 text = f.read()
         except Exception as e:
             print(f"Error en A7 al procesar {filename}: {e}")
-            
         end_file = time.time()
         file_durations.append((filename, end_file - start_file))
-
     end_total = time.time()
     total_time = end_total - start_total
-
     log_file = os.path.join(project_folder, "a7_03038135.txt")
     with open(log_file, "w", encoding="utf-8") as log:
         for filename, duration in file_durations:
             log.write(f"{filename}            {duration:.4f}\n")
         log.write(f"Tiempo total de ejecucion: {total_time:.4f} segundos\n")
-
     return file_durations, total_time
 
 def create_hash_table_dictionary(folder_path, project_folder, matricula="03038135"):
     files_to_process = [f for f in os.listdir(folder_path) if f.endswith(".html")]
-    
     hash_table = [[] for _ in range(HASH_TABLE_SIZE)]
-    
     token_freq = Counter()
     token_files = defaultdict(set)
-    
     file_durations = []
     total_collisions = 0
-    
     start_total = time.time()
-
     for filename in files_to_process:
         path = os.path.join(folder_path, filename)
         start_file = time.time()
-        
         try:
             with open(path, "r", encoding="latin-1") as f:
                 text = f.read()
                 cleaned_text = re.sub(r'<.*?>', '', text)
                 words = extract_words(cleaned_text)
-
                 for w in words:
                     word = w.lower()
                     token_freq[word] += 1
                     token_files[word].add(filename)
         except Exception as e:
             print(f"Error en A8 al procesar {filename}: {e}")
-            
         end_file = time.time()
         file_durations.append((filename, end_file - start_file))
-    
     end_data_collection = time.time()
     data_collection_time = end_data_collection - start_total
-    
     start_hash_build = time.time()
     sorted_tokens = sorted(token_freq.keys())
-    
     for token in sorted_tokens:
         freq = token_freq[token]
         num_files = len(token_files[token])
-        
         index = hash_function(token, HASH_TABLE_SIZE)
-        
         if hash_table[index]:
             total_collisions += 1
-        
         hash_table[index].append((token, freq, num_files, index))
-        
     end_hash_build = time.time()
     hash_build_time = end_hash_build - start_hash_build
-    
     end_total = time.time()
     total_time = end_total - start_total
-
     output_file = os.path.join(project_folder, f"a8_dictionary.txt")
-    
     with open(output_file, "w", encoding="utf-8") as archivo:
         for i, slot in enumerate(hash_table):
             if not slot:
@@ -292,103 +258,66 @@ def create_hash_table_dictionary(folder_path, project_folder, matricula="0303813
             else:
                 for token, freq, num_files, _ in slot:
                     archivo.write(f"Posición Hash: {i}, Token: {token}, Frecuencia: {freq}, Archivos: {num_files}, Posición Posting: {i}\n")
-                    
     log_file = os.path.join(project_folder, f"a8_{matricula}.txt")
     with open(log_file, "w", encoding="utf-8") as log:
         for filename, duration in file_durations:
             log.write(f"{filename}           {duration:.4f} \n")
-
         log.write(f"Tiempo total de ejecución del programa: {total_time:.4f} segundos\n") 
     return file_durations, total_time, total_collisions, HASH_TABLE_SIZE
 
-
 def create_filtered_hash_table_dictionary(folder_path, project_folder, matricula="03038135", min_frequency=3):
     files_to_process = [f for f in os.listdir(folder_path) if f.endswith(".html")]
-    
     stoplist_path = os.path.join(project_folder, "Actividad9_stoplist.txt")
-    stopwords = set()
-    try:
-        with open(stoplist_path, 'r', encoding='utf-8') as f:
-            content = f.read().lower()
-            stopwords.update(re.split(r'\s+|,', content))
-            stopwords.discard('')
-    except FileNotFoundError:
-        print(f"ADVERTENCIA: Archivo de stoplist no encontrado en {stoplist_path}. Continuando sin filtrar stopwords.")
-    except Exception as e:
-        print(f"ADVERTENCIA: Error al leer stoplist: {e}. Continuando sin filtrar stopwords.")
-
+    stopwords = load_stoplist(stoplist_path)
     hash_table = [[] for _ in range(HASH_TABLE_SIZE)]
     token_freq = Counter()
     token_files = defaultdict(set)
-    
     file_durations = []
     total_collisions = 0
     total_tokens_read = 0
-    
     start_total = time.time()
-
     for filename in files_to_process:
         path = os.path.join(folder_path, filename)
         start_file = time.time()
-        
         try:
             with open(path, "r", encoding="latin-1") as f:
                 text = f.read()
                 cleaned_text = re.sub(r'<.*?>', '', text)
                 words = extract_words(cleaned_text)
-
                 for w in words:
                     word = w.lower()
-                    
                     total_tokens_read += 1 
-                    
                     if len(word) <= 1: 
                         continue
-                    
                     if word in stopwords: 
                         continue
-                        
                     token_freq[word] += 1
                     token_files[word].add(filename)
         except Exception as e:
             print(f"Error en A9 al procesar {filename}: {e}")
-            
         end_file = time.time()
         file_durations.append((filename, end_file - start_file))
-    
     end_data_collection = time.time()
     data_collection_time = end_data_collection - start_total
-    
     start_hash_build = time.time()
     sorted_tokens = sorted(token_freq.keys())
-    
     total_tokens_filtered_low_freq = 0
-    
     for token in sorted_tokens:
         freq = token_freq[token]
-        
         if freq < min_frequency:
             total_tokens_filtered_low_freq += 1
             continue 
-        
         num_files = len(token_files[token])
         index = hash_function(token, HASH_TABLE_SIZE)
-        
         if hash_table[index]:
             total_collisions += 1
-        
         hash_table[index].append((token, freq, num_files, index))
-        
     end_hash_build = time.time()
     hash_build_time = end_hash_build - start_hash_build
-    
     end_total = time.time()
     total_time = end_total - start_total
-    
     tokens_stored = len(token_freq) - total_tokens_filtered_low_freq
-
     output_file = os.path.join(project_folder, f"a9_dictionary.txt")
-    
     with open(output_file, "w", encoding="utf-8") as archivo:
         for i, slot in enumerate(hash_table):
             if not slot:
@@ -396,143 +325,483 @@ def create_filtered_hash_table_dictionary(folder_path, project_folder, matricula
             else:
                 for token, freq, num_files, _ in slot:
                     archivo.write(f"Posición Hash: {i}, Token: {token}, Frecuencia: {freq}, Archivos: {num_files}, Posición Posting: {i}\n")
-                    
     log_file = os.path.join(project_folder, f"a9_{matricula}.txt")
     with open(log_file, "w", encoding="utf-8") as log:
         for filename, duration in file_durations:
             log.write(f"{filename}           {duration:.4f} \n")
-        
-        log.write(f"Tiempo total de ejecucio||n del programa: {total_time:.4f} segundos\n") 
-
+        log.write(f"Tiempo total de ejecucion del programa: {total_time:.4f} segundos\n") 
     return file_durations, total_time, total_collisions, HASH_TABLE_SIZE
 
-def create_inverted_index(folder_path, project_folder, matricula="03038135"):
+# ============================================================================
+# FUNCIONES PARA ÍNDICE INVERTIDO (A11) - DOS VERSIONES
+# ============================================================================
+
+def create_inverted_index_with_options(folder_path, project_folder, 
+                                       matricula="03038135", 
+                                       use_stoplist=True,
+                                       min_frequency=3):
+    """
+    Crea el índice invertido con opciones de filtrado
+    """
+    suffix = "" if use_stoplist else "_no_stoplist"
+    
+    print(f"\n{'='*70}")
+    print(f"Generando índice invertido {'CON' if use_stoplist else 'SIN'} stoplist")
+    print(f"{'='*70}")
+    
     files_to_process = sorted([f for f in os.listdir(folder_path) if f.endswith('.html')])
-
-    log_filename = f"a11_{matricula}.txt"
+    
+    # Cargar stoplist si se requiere
+    stopwords = set()
+    if use_stoplist:
+        stoplist_path = os.path.join(project_folder, "Actividad9_stoplist.txt")
+        stopwords = load_stoplist(stoplist_path)
+    
+    log_filename = f"a11_{matricula}{suffix}.txt"
     log_path = os.path.join(project_folder, log_filename)
-
+    
     with open(log_path, "w", encoding="utf-8") as log:
-        log.write("=== A11 - Generación de Índice Invertido ===\n")
-
+        log.write(f"=== A11 - Generación de Índice Invertido {'CON' if use_stoplist else 'SIN'} Stoplist ===\n")
+        log.write(f"Frecuencia mínima: {min_frequency}\n")
+        log.write(f"Stoplist activa: {use_stoplist}\n\n")
+        
+        # Crear archivo de documentos
         document_ids = {}
-        documents_output = os.path.join(project_folder, "documents.txt")
-
+        documents_output = os.path.join(project_folder, f"documents{suffix}.txt")
+        
         with open(documents_output, "w", encoding="utf-8") as doc_file:
             start_total = time.time()
-
             for i, filename in enumerate(files_to_process, start=1):
                 start = time.time()
-
                 full_path = os.path.join(folder_path, filename)
                 document_ids[filename] = i
                 doc_file.write(f"{i} - {filename} - {full_path}\n")
-
                 end = time.time()
                 log.write(f"{filename} - {end - start:.4f} segundos\n")
-
+        
         log.write("\n=== Procesando tokens ===\n")
-
+        
+        # Diccionarios para el índice
         token_doc_freq = defaultdict(lambda: defaultdict(int))
-
+        token_total_freq = Counter()
+        
+        # Primera pasada: contar frecuencias
         for filename in files_to_process:
             start = time.time()
             full_path = os.path.join(folder_path, filename)
-
+            
             with open(full_path, "r", encoding="latin-1") as f:
                 cleaned = re.sub(r'<.*?>', '', f.read())
                 words = extract_words(cleaned)
-
+                
                 for w in words:
                     token = w.lower()
+                    
+                    # Filtro 1: Longitud
+                    if len(token) <= 1:
+                        continue
+                    
+                    # Filtro 2: Stoplist
+                    if use_stoplist and token in stopwords:
+                        continue
+                    
                     token_doc_freq[token][filename] += 1
-
+                    token_total_freq[token] += 1
+            
             end = time.time()
             log.write(f"Tokens de {filename} procesados en {end - start:.4f} segundos\n")
-
-        log.write("\n=== Creando Posting y Diccionario ===\n")
-
-        posting_output = os.path.join(project_folder, "posting.txt")
-        dictionary_output = os.path.join(project_folder, "dictionary.txt")
-
+        
+        # Filtro 3: Frecuencia mínima
+        tokens_to_keep = {token for token, freq in token_total_freq.items() 
+                         if freq >= min_frequency}
+        
+        log.write(f"\n=== Estadísticas ===\n")
+        log.write(f"Tokens únicos antes de filtro: {len(token_total_freq)}\n")
+        log.write(f"Tokens finales en el índice: {len(tokens_to_keep)}\n\n")
+        
+        log.write("=== Creando Posting y Diccionario ===\n")
+        
+        posting_output = os.path.join(project_folder, f"posting{suffix}.txt")
+        dictionary_output = os.path.join(project_folder, f"dictionary{suffix}.txt")
+        
         posting_position = 0
         posting_entries = []
-
+        
         with open(dictionary_output, "w", encoding="utf-8") as dict_file, \
              open(posting_output, "w", encoding="utf-8") as post_file:
-
-            for token in sorted(token_doc_freq.keys()):
+            
+            for token in sorted(tokens_to_keep):
                 docs = token_doc_freq[token]
-                total_freq = sum(docs.values())
-
+                total_freq = token_total_freq[token]
+                
                 start_pos = posting_position
-
-                for filename, freq in docs.items():
+                
+                for filename in sorted(docs.keys()):
+                    freq = docs[filename]
                     doc_id = document_ids[filename]
                     weight = round(freq / total_freq, 4)
                     posting_entries.append(f"{doc_id} - {weight}")
                     posting_position += 1
-
+                
                 dict_file.write(
                     f"token: {token} | freq: {total_freq} | docs: {len(docs)} | posting_pos: {start_pos}\n"
                 )
-
+            
             for idx, entry in enumerate(posting_entries):
                 post_file.write(f"{idx}:  {entry}\n")
-
+        
         end_total = time.time()
         total_time = end_total - start_total
-
+        
         log.write("\n=== RESUMEN FINAL ===\n")
         log.write(f"Archivos procesados: {len(files_to_process)}\n")
+        log.write(f"Tokens en el diccionario: {len(tokens_to_keep)}\n")
         log.write(f"Tiempo total del proceso: {total_time:.4f} segundos\n")
-        log.write("============================================\n")
-
+        log.write("="*70 + "\n")
+    
+    print(f"✓ Índice {'CON' if use_stoplist else 'SIN'} stoplist generado")
+    print(f"  - Tokens indexados: {len(tokens_to_keep)}\n")
+    
     return log_path
 
-if __name__ == "__main__":
+# ============================================================================
+# FUNCIÓN DE BÚSQUEDA (RETRIEVE)
+# ============================================================================
+
+def normalize_token(token):
+    """Normaliza el token a minúsculas para búsqueda"""
+    return token.lower().strip()
+
+def search_token_in_dictionary(dictionary_path, search_token):
+    """Busca un token en el archivo de diccionario"""
+    search_token = normalize_token(search_token)
+    
+    try:
+        with open(dictionary_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                match = re.search(r'token:\s*(\S+)\s*\|\s*freq:\s*(\d+)\s*\|\s*docs:\s*(\d+)\s*\|\s*posting_pos:\s*(\d+)', line)
+                if match:
+                    token = match.group(1)
+                    if token == search_token:
+                        return {
+                            'token': token,
+                            'freq': int(match.group(2)),
+                            'docs': int(match.group(3)),
+                            'posting_pos': int(match.group(4))
+                        }
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo {dictionary_path}")
+        return None
+    except Exception as e:
+        print(f"Error al leer el diccionario: {e}")
+        return None
+    
+    return None
+
+def get_documents_from_posting(posting_path, start_pos, num_docs):
+    """Obtiene los documentos del archivo posting"""
+    documents = []
+    
+    try:
+        with open(posting_path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            
+            for i in range(start_pos, min(start_pos + num_docs, len(lines))):
+                match = re.search(r'(\d+):\s*(\d+)\s*-\s*([\d.]+)', lines[i])
+                if match:
+                    doc_id = int(match.group(2))
+                    weight = float(match.group(3))
+                    documents.append((doc_id, weight))
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo {posting_path}")
+        return []
+    except Exception as e:
+        print(f"Error al leer posting: {e}")
+        return []
+    
+    return documents
+
+def get_document_names(documents_path, doc_ids):
+    """Obtiene los nombres de archivos correspondientes a los doc_ids"""
+    doc_map = {}
+    
+    try:
+        with open(documents_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                match = re.search(r'(\d+)\s*-\s*(\S+)\s*-', line)
+                if match:
+                    doc_id = int(match.group(1))
+                    filename = match.group(2)
+                    doc_map[doc_id] = filename
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo {documents_path}")
+        return []
+    except Exception as e:
+        print(f"Error al leer documentos: {e}")
+        return []
+    
+    results = []
+    for doc_id, weight in doc_ids:
+        if doc_id in doc_map:
+            results.append((doc_id, doc_map[doc_id], weight))
+    
+    # Ordenar por peso descendente
+    results.sort(key=lambda x: x[2], reverse=True)
+    return results
+
+def retrieve(search_token, use_stoplist=True):
+    """Función principal de búsqueda"""
+    
+    suffix = "" if use_stoplist else "_no_stoplist"
+    
+    dictionary_path = os.path.join(project_folder, f"dictionary{suffix}.txt")
+    posting_path = os.path.join(project_folder, f"posting{suffix}.txt")
+    documents_path = os.path.join(project_folder, f"documents{suffix}.txt")
+    
+    print(f"\n{'='*60}")
+    print(f"Búsqueda del token: '{search_token}'")
+    print(f"Usando índice: {'CON' if use_stoplist else 'SIN'} stoplist")
+    print(f"{'='*60}\n")
+    
+    # Buscar en el diccionario
+    token_info = search_token_in_dictionary(dictionary_path, search_token)
+    
+    if token_info is None:
+        print(f"❌ El token '{search_token}' NO fue encontrado en el diccionario.")
+        print(f"   Posibles razones:")
+        print(f"   - El token no existe en ningún documento")
+        if use_stoplist:
+            print(f"   - Fue filtrado por stoplist")
+        print(f"   - Tiene frecuencia menor a 3")
+        return
+    
+    print(f"✓ Token encontrado en el diccionario:")
+    print(f"  - Frecuencia total: {token_info['freq']}")
+    print(f"  - Aparece en {token_info['docs']} documento(s)")
+    print(f"  - Posición en posting: {token_info['posting_pos']}\n")
+    
+    # Obtener documentos del posting
+    doc_list = get_documents_from_posting(
+        posting_path, 
+        token_info['posting_pos'], 
+        token_info['docs']
+    )
+    
+    if not doc_list:
+        print("❌ No se pudieron recuperar los documentos del posting.")
+        return
+    
+    # Obtener nombres de archivos
+    results = get_document_names(documents_path, doc_list)
+    
+    if not results:
+        print("❌ No se pudieron recuperar los nombres de los documentos.")
+        return
+    
+    # Mostrar resultados
+    print(f"📄 Documentos que contienen '{search_token}':\n")
+    
+    for i, (doc_id, filename, weight) in enumerate(results, 1):
+        print(f"{i}. {filename}")
+    
+    print(f"\n{'='*60}")
+    print(f"Total: {len(results)} documento(s) encontrado(s)")
+    print(f"{'='*60}\n")
+
+# ============================================================================
+# FUNCIÓN PARA EJECUTAR TODAS LAS ACTIVIDADES PREVIAS
+# ============================================================================
+
+def ejecutar_actividades_previas():
+    """Ejecuta todas las actividades de la A1 a la A9"""
+    
+    print("\n" + "="*70)
+    print("EJECUTANDO ACTIVIDADES PREVIAS (A1-A9)")
+    print("="*70 + "\n")
     
     starting_total_time = time.time()
     
     reading_results, cleanning_results, words_results = list_html_files(folder_path, output_folder)
-    
     file_durations_a4, sort_duration_a4, consolidated_duration_a4 = create_consolidated_words_file(output_folder, project_folder)
-    
     file_durations_a5, sort_duration_a5, total_time_a5 = create_specific_consolidated_file(folder_path, project_folder)
-
     file_durations_a6, total_time_a6 = create_dictionary_with_file_count(folder_path, project_folder)
-
     file_durations_a7, total_time_a7 = create_copy_log(folder_path, project_folder)
-
     file_durations_a8, total_time_a8, total_collisions_a8, hash_size_a8 = create_hash_table_dictionary(folder_path, project_folder)
-
     file_durations_a9, total_time_a9, total_collisions_a9, hash_size_a9 = create_filtered_hash_table_dictionary(folder_path, project_folder)
-
-    create_inverted_index(folder_path, project_folder)
     
     ending_total_time = time.time()
     total_execution_time = ending_total_time - starting_total_time
-
+    
     with open(os.path.join(project_folder, "a1_03038135.txt"), "w", encoding="utf-8") as archivo:
         for file, duration in reading_results:
             archivo.write(f"{file}            {duration:.4f} \n")
         archivo.write(f"tiempo total en abrir los archivos: {sum(d for _, d in reading_results):.4f} segundos\n")
         archivo.write(f"tiempo total de ejecucion {total_execution_time:.4f} segundos\n")
-        
+    
     with open(os.path.join(project_folder, "a2_03038135.txt"), "w", encoding="utf-8") as archivo:
         for file, duration in cleanning_results:
             archivo.write(f"{file}            {duration:.4f} \n")
         archivo.write(f"tiempo total en eliminar las etiquetas HTML: {sum(d for _, d in cleanning_results):.4f} segundos\n")
         archivo.write(f"tiempo total de ejecucion {total_execution_time:.4f} segundos\n")
-
+    
     with open(os.path.join(project_folder, "a3_03038135.txt"), "w", encoding="utf-8") as archivo:
         for file, duration in words_results:
             archivo.write(f"{file}            {duration:.4f} \n")
         archivo.write(f"tiempo total en conteo de palabras y escritura de archivo: {sum(d for _, d in words_results):.4f} segundos\n")
         archivo.write(f"tiempo total de ejecucion {total_execution_time:.4f} segundos\n")
-
+    
     with open(os.path.join(project_folder, "a4_03038135.txt"), "w", encoding="utf-8") as archivo:
         for file, duration in file_durations_a4:
             archivo.write(f"{file}            {duration:.4f} \n")
         archivo.write(f"tiempo total en crear el nuevo archivo (incluye sort): {consolidated_duration_a4:.4f} segundos\n")
         archivo.write(f"tiempo total de ejecucion: {total_execution_time:.4f} segundos\n")
+    
+    print("✓ Actividades A1-A9 completadas exitosamente\n")
+
+# ============================================================================
+# FUNCIÓN PARA PROBAR TODOS LOS TOKENS SOLICITADOS
+# ============================================================================
+
+def test_all_tokens():
+    """Prueba todos los tokens solicitados"""
+    
+    TOKENS_TO_SEARCH = [
+        "Gauch", "elephants", "CSCE", "Arkansas", "gift", "abcdef",
+        "20", "20.07", "123-456-7890", "lawyer", "consumers",
+        "garden", "computer", "United", "States", "laws"
+    ]
+    
+    results_file = os.path.join(project_folder, "resultados_busquedas.txt")
+    
+    with open(results_file, "w", encoding="utf-8") as f:
+        f.write("="*80 + "\n")
+        f.write("RESULTADOS DE BÚSQUEDAS - ACTIVIDAD 11\n")
+        f.write("="*80 + "\n\n")
+        
+        for i, token in enumerate(TOKENS_TO_SEARCH, 1):
+            print(f"\n{'='*80}")
+            print(f"BÚSQUEDA {i}/{len(TOKENS_TO_SEARCH)}: '{token}'")
+            print(f"{'='*80}")
+            
+            f.write(f"\n{'='*80}\n")
+            f.write(f"TOKEN {i}: '{token}'\n")
+            f.write(f"{'='*80}\n\n")
+            
+            # Búsqueda CON stoplist
+            f.write("--- CON STOPLIST ---\n")
+            
+            suffix = ""
+            dictionary_path = os.path.join(project_folder, f"dictionary{suffix}.txt")
+            posting_path = os.path.join(project_folder, f"posting{suffix}.txt")
+            documents_path = os.path.join(project_folder, f"documents{suffix}.txt")
+            
+            token_info = search_token_in_dictionary(dictionary_path, token)
+            
+            if token_info:
+                doc_list = get_documents_from_posting(posting_path, token_info['posting_pos'], token_info['docs'])
+                results = get_document_names(documents_path, doc_list)
+                f.write(f"✓ Token encontrado - {len(results)} documento(s):\n")
+                for j, (doc_id, filename, weight) in enumerate(results, 1):
+                    f.write(f"  {j}. {filename}\n")
+            else:
+                f.write("❌ Token NO encontrado\n")
+            
+            # Búsqueda SIN stoplist
+            f.write("\n--- SIN STOPLIST ---\n")
+            
+            suffix = "_no_stoplist"
+            dictionary_path = os.path.join(project_folder, f"dictionary{suffix}.txt")
+            posting_path = os.path.join(project_folder, f"posting{suffix}.txt")
+            documents_path = os.path.join(project_folder, f"documents{suffix}.txt")
+            
+            token_info = search_token_in_dictionary(dictionary_path, token)
+            
+            if token_info:
+                doc_list = get_documents_from_posting(posting_path, token_info['posting_pos'], token_info['docs'])
+                results = get_document_names(documents_path, doc_list)
+                f.write(f"✓ Token encontrado - {len(results)} documento(s):\n")
+                for j, (doc_id, filename, weight) in enumerate(results, 1):
+                    f.write(f"  {j}. {filename}\n")
+            else:
+                f.write("❌ Token NO encontrado\n")
+            
+            f.write("\n")
+    
+    print(f"\n{'='*80}")
+    print(f"✓ TODAS LAS BÚSQUEDAS COMPLETADAS")
+    print(f"✓ Resultados guardados en: {results_file}")
+    print(f"{'='*80}\n")
+
+# ============================================================================
+# MENÚ PRINCIPAL
+# ============================================================================
+
+def mostrar_menu():
+    """Muestra el menú principal"""
+    print("\n" + "="*70)
+    print(" SISTEMA DE BÚSQUEDA DE INFORMACIÓN - ACTIVIDAD 11")
+    print("="*70)
+    print("\n1. Ejecutar TODAS las actividades (A1-A9)")
+    print("2. Generar índices invertidos (CON y SIN stoplist)")
+    print("3. Buscar un token")
+    print("4. Buscar TODOS los tokens solicitados")
+    print("5. Salir")
+    print("\n" + "="*70)
+
+def main():
+    """Función principal con menú interactivo"""
+    
+    # Si se reciben argumentos de línea de comandos, ejecutar búsqueda directa
+    if len(sys.argv) >= 2:
+        token = sys.argv[1]
+        use_stoplist = "--no-stoplist" not in sys.argv
+        retrieve(token, use_stoplist)
+        return
+    
+    while True:
+        mostrar_menu()
+        opcion = input("\nSelecciona una opción (1-5): ").strip()
+        
+        if opcion == "1":
+            ejecutar_actividades_previas()
+            input("\nPresiona Enter para continuar...")
+            
+        elif opcion == "2":
+            print("\nGenerando índices invertidos...")
+            create_inverted_index_with_options(folder_path, project_folder, use_stoplist=True, min_frequency=3)
+            create_inverted_index_with_options(folder_path, project_folder, use_stoplist=False, min_frequency=3)
+            print("\n✓ Índices generados exitosamente")
+            input("\nPresiona Enter para continuar...")
+            
+        elif opcion == "3":
+            token = input("\nIngresa el token a buscar: ").strip()
+            print("\n¿Qué versión usar?")
+            print("1. Con stoplist")
+            print("2. Sin stoplist")
+            print("3. Ambas")
+            version = input("Selecciona (1/2/3): ").strip()
+            
+            if version == "1":
+                retrieve(token, use_stoplist=True)
+            elif version == "2":
+                retrieve(token, use_stoplist=False)
+            elif version == "3":
+                retrieve(token, use_stoplist=True)
+                retrieve(token, use_stoplist=False)
+            
+            input("\nPresiona Enter para continuar...")
+            
+        elif opcion == "4":
+            test_all_tokens()
+            input("\nPresiona Enter para continuar...")
+            
+        elif opcion == "5":
+            print("\n¡Hasta luego!\n")
+            break
+            
+        else:
+            print("\n❌ Opción inválida. Intenta de nuevo.")
+            input("\nPresiona Enter para continuar...")
+
+if __name__ == "__main__":
+    main()
