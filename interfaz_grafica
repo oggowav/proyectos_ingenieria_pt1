@@ -1,0 +1,627 @@
+"""
+Buscador de Documentos HTML
+Interfaz gráfica para buscar palabras en documentos HTML indexados
+"""
+
+import tkinter as tk
+from tkinter import ttk, messagebox, scrolledtext
+import os
+import re
+from collections import defaultdict
+from pathlib import Path
+
+# Configuración de rutas
+PROJECT_FOLDER = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1'
+HTML_FOLDER = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1/CS13309_Archivos_HTML/Files'
+
+HASH_TABLE_SIZE = 20000
+
+def hash_function(key, size):
+    """Implementa función hash DJB2"""
+    hash_value = 5381
+    for char in key:
+        hash_value = ((hash_value << 5) + hash_value) + ord(char)
+    return hash_value % size
+
+def extract_words(text):
+    """Extrae palabras del texto"""
+    words = re.findall(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9\-]+", text)
+    return words
+
+
+class SearchEngine:
+    """Motor de búsqueda para documentos indexados"""
+    
+    def __init__(self, project_folder, html_folder):
+        self.project_folder = project_folder
+        self.html_folder = html_folder
+        self.documents = {}
+        self.dictionary = {}
+        self.posting_list = []
+        self.load_index()
+    
+    def load_index(self):
+        """Carga el índice invertido desde los archivos"""
+        # Cargar documents.txt
+        documents_file = os.path.join(self.project_folder, "documents.txt")
+        if os.path.exists(documents_file):
+            with open(documents_file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    parts = line.strip().split(' - ')
+                    if len(parts) >= 3:
+                        doc_id = int(parts[0])
+                        filename = parts[1]
+                        self.documents[doc_id] = filename
+        
+        # Cargar dictionary.txt
+        dictionary_file = os.path.join(self.project_folder, "dictionary.txt")
+        if os.path.exists(dictionary_file):
+            with open(dictionary_file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    # Formato: token: palabra | freq: N | docs: M | posting_pos: P
+                    if 'token:' in line:
+                        parts = line.strip().split('|')
+                        token = parts[0].split(':')[1].strip()
+                        freq = int(parts[1].split(':')[1].strip())
+                        docs_count = int(parts[2].split(':')[1].strip())
+                        posting_pos = int(parts[3].split(':')[1].strip())
+                        
+                        self.dictionary[token] = {
+                            'freq': freq,
+                            'docs': docs_count,
+                            'posting_pos': posting_pos
+                        }
+        
+        # Cargar posting.txt
+        posting_file = os.path.join(self.project_folder, "posting.txt")
+        if os.path.exists(posting_file):
+            with open(posting_file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    # Formato: idx: doc_id - weight
+                    if ':' in line:
+                        parts = line.strip().split(':')[1].strip().split(' - ')
+                        if len(parts) == 2:
+                            doc_id = int(parts[0])
+                            weight = float(parts[1])
+                            self.posting_list.append((doc_id, weight))
+    
+    def search_word(self, word):
+        """Busca una palabra en el índice"""
+        word = word.lower().strip()
+        
+        if not word:
+            return None
+        
+        if word not in self.dictionary:
+            return None
+        
+        info = self.dictionary[word]
+        posting_pos = info['posting_pos']
+        docs_count = info['docs']
+        
+        # Obtener documentos desde la lista de posting
+        results = []
+        for i in range(posting_pos, posting_pos + docs_count):
+            if i < len(self.posting_list):
+                doc_id, weight = self.posting_list[i]
+                if doc_id in self.documents:
+                    results.append({
+                        'doc_id': doc_id,
+                        'filename': self.documents[doc_id],
+                        'weight': weight,
+                        'relevance': weight * 100
+                    })
+        
+        # Ordenar por relevancia
+        results.sort(key=lambda x: x['relevance'], reverse=True)
+        
+        return {
+            'word': word,
+            'total_freq': info['freq'],
+            'docs_count': docs_count,
+            'results': results
+        }
+    
+    def search_multiple_words(self, words):
+        """Busca múltiples palabras y combina resultados"""
+        word_list = [w.strip().lower() for w in words.split() if w.strip()]
+        
+        if not word_list:
+            return None
+        
+        # Buscar cada palabra
+        all_results = {}
+        for word in word_list:
+            result = self.search_word(word)
+            if result:
+                for doc in result['results']:
+                    doc_id = doc['doc_id']
+                    if doc_id not in all_results:
+                        all_results[doc_id] = {
+                            'doc_id': doc_id,
+                            'filename': doc['filename'],
+                            'relevance': 0,
+                            'matched_words': []
+                        }
+                    all_results[doc_id]['relevance'] += doc['relevance']
+                    all_results[doc_id]['matched_words'].append(word)
+        
+        # Convertir a lista y ordenar
+        combined_results = list(all_results.values())
+        combined_results.sort(key=lambda x: x['relevance'], reverse=True)
+        
+        return {
+            'words': word_list,
+            'total_results': len(combined_results),
+            'results': combined_results
+        }
+    
+    def get_document_preview(self, filename, max_chars=500):
+        """Obtiene una vista previa del documento"""
+        filepath = os.path.join(self.html_folder, filename)
+        
+        if not os.path.exists(filepath):
+            return "Documento no encontrado"
+        
+        try:
+            with open(filepath, 'r', encoding='latin-1') as f:
+                content = f.read()
+                # Limpiar HTML
+                cleaned = re.sub(r'<.*?>', '', content)
+                # Limpiar espacios múltiples
+                cleaned = re.sub(r'\s+', ' ', cleaned)
+                cleaned = cleaned.strip()
+                
+                if len(cleaned) > max_chars:
+                    return cleaned[:max_chars] + "..."
+                return cleaned
+        except Exception as e:
+            return f"Error al leer documento: {e}"
+
+
+class SearchGUI:
+    """Interfaz gráfica del buscador"""
+    
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Buscador de Documentos HTML")
+        self.root.geometry("1000x700")
+        self.root.resizable(True, True)
+        
+        # Configurar estilo
+        self.setup_styles()
+        
+        # Inicializar motor de búsqueda
+        self.search_engine = SearchEngine(PROJECT_FOLDER, HTML_FOLDER)
+        
+        # Crear interfaz
+        self.create_widgets()
+        
+        # Verificar si el índice está cargado
+        self.check_index()
+    
+    def setup_styles(self):
+        """Configura estilos personalizados"""
+        style = ttk.Style()
+        style.theme_use('clam')
+        
+        # Colores
+        bg_color = '#f0f0f0'
+        accent_color = '#2563EB'
+        
+        self.root.configure(bg=bg_color)
+        
+        style.configure('Title.TLabel', 
+                       font=('Segoe UI', 24, 'bold'),
+                       background=bg_color,
+                       foreground='#1e293b')
+        
+        style.configure('Subtitle.TLabel',
+                       font=('Segoe UI', 10),
+                       background=bg_color,
+                       foreground='#64748b')
+        
+        style.configure('Search.TButton',
+                       font=('Segoe UI', 11, 'bold'),
+                       padding=10)
+        
+        style.configure('Result.TFrame',
+                       background='white',
+                       relief='solid',
+                       borderwidth=1)
+    
+    def create_widgets(self):
+        """Crea todos los widgets de la interfaz"""
+        # Frame principal
+        main_frame = ttk.Frame(self.root, padding="20")
+        main_frame.pack(fill=tk.BOTH, expand=True)
+        
+        # Header
+        header_frame = ttk.Frame(main_frame)
+        header_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        title_label = ttk.Label(header_frame, 
+                               text="🔍 Buscador de Documentos HTML",
+                               style='Title.TLabel')
+        title_label.pack()
+        
+        subtitle_label = ttk.Label(header_frame,
+                                   text="Sistema de Recuperación de Información",
+                                   style='Subtitle.TLabel')
+        subtitle_label.pack()
+        
+        # Frame de búsqueda
+        search_frame = ttk.Frame(main_frame)
+        search_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        # Campo de búsqueda
+        search_input_frame = ttk.Frame(search_frame)
+        search_input_frame.pack(fill=tk.X)
+        
+        self.search_entry = ttk.Entry(search_input_frame,
+                                      font=('Segoe UI', 12))
+        self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
+        self.search_entry.bind('<Return>', lambda e: self.perform_search())
+        
+        search_btn = ttk.Button(search_input_frame,
+                               text="Buscar",
+                               style='Search.TButton',
+                               command=self.perform_search)
+        search_btn.pack(side=tk.RIGHT)
+        
+        # Opciones de búsqueda
+        options_frame = ttk.Frame(search_frame)
+        options_frame.pack(fill=tk.X, pady=(10, 0))
+        
+        self.search_mode = tk.StringVar(value="single")
+        single_radio = ttk.Radiobutton(options_frame,
+                                       text="Palabra única",
+                                       variable=self.search_mode,
+                                       value="single")
+        single_radio.pack(side=tk.LEFT, padx=(0, 10))
+        
+        multiple_radio = ttk.Radiobutton(options_frame,
+                                         text="Múltiples palabras",
+                                         variable=self.search_mode,
+                                         value="multiple")
+        multiple_radio.pack(side=tk.LEFT)
+        
+        # Frame de estadísticas
+        self.stats_frame = ttk.Frame(main_frame)
+        self.stats_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        self.stats_label = ttk.Label(self.stats_frame,
+                                     text="",
+                                     font=('Segoe UI', 10),
+                                     foreground='#64748b')
+        self.stats_label.pack(anchor=tk.W)
+        
+        # Frame de resultados con scroll
+        results_container = ttk.Frame(main_frame)
+        results_container.pack(fill=tk.BOTH, expand=True)
+        
+        # Canvas y scrollbar para resultados
+        canvas = tk.Canvas(results_container, bg='#f0f0f0', highlightthickness=0)
+        scrollbar = ttk.Scrollbar(results_container, orient="vertical", command=canvas.yview)
+        
+        self.results_frame = ttk.Frame(canvas)
+        self.results_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        
+        canvas.create_window((0, 0), window=self.results_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        # Bind mouse wheel
+        canvas.bind_all("<MouseWheel>", lambda e: canvas.yview_scroll(int(-1*(e.delta/120)), "units"))
+        
+        # Mensaje inicial
+        self.show_welcome_message()
+    
+    def check_index(self):
+        """Verifica si el índice está cargado correctamente"""
+        if not self.search_engine.documents:
+            messagebox.showwarning(
+                "Índice no encontrado",
+                "No se encontró el índice invertido.\n\n"
+                "Asegúrate de haber ejecutado la indexación primero."
+            )
+    
+    def show_welcome_message(self):
+        """Muestra mensaje de bienvenida"""
+        welcome_frame = ttk.Frame(self.results_frame)
+        welcome_frame.pack(fill=tk.BOTH, expand=True, pady=50)
+        
+        welcome_text = f"""
+        👋 Bienvenido al Buscador de Documentos
+        
+        📚 Documentos indexados: {len(self.search_engine.documents)}
+        📖 Palabras en diccionario: {len(self.search_engine.dictionary)}
+        
+        Ingresa una palabra en el campo de búsqueda para comenzar.
+        """
+        
+        label = tk.Label(welcome_frame,
+                        text=welcome_text,
+                        font=('Segoe UI', 11),
+                        bg='#f0f0f0',
+                        fg='#64748b',
+                        justify=tk.CENTER)
+        label.pack()
+    
+    def clear_results(self):
+        """Limpia los resultados anteriores"""
+        for widget in self.results_frame.winfo_children():
+            widget.destroy()
+    
+    def perform_search(self):
+        """Realiza la búsqueda"""
+        query = self.search_entry.get().strip()
+        
+        if not query:
+            messagebox.showwarning("Búsqueda vacía", "Por favor ingresa una palabra para buscar.")
+            return
+        
+        self.clear_results()
+        
+        mode = self.search_mode.get()
+        
+        if mode == "single":
+            self.search_single_word(query)
+        else:
+            self.search_multiple_words(query)
+    
+    def search_single_word(self, word):
+        """Busca una palabra única"""
+        result = self.search_engine.search_word(word)
+        
+        if not result:
+            self.show_no_results(word)
+            return
+        
+        # Mostrar estadísticas
+        stats_text = f"📊 Resultados para '{word}': {result['docs_count']} documento(s) encontrado(s) | Frecuencia total: {result['total_freq']}"
+        self.stats_label.config(text=stats_text)
+        
+        # Mostrar resultados
+        for i, doc in enumerate(result['results'], 1):
+            self.create_result_card(i, doc, word)
+    
+    def search_multiple_words(self, words):
+        """Busca múltiples palabras"""
+        result = self.search_engine.search_multiple_words(words)
+        
+        if not result or result['total_results'] == 0:
+            self.show_no_results(words)
+            return
+        
+        # Mostrar estadísticas
+        stats_text = f"📊 Resultados para '{', '.join(result['words'])}': {result['total_results']} documento(s) encontrado(s)"
+        self.stats_label.config(text=stats_text)
+        
+        # Mostrar resultados
+        for i, doc in enumerate(result['results'], 1):
+            self.create_result_card_multiple(i, doc)
+    
+    def show_no_results(self, query):
+        """Muestra mensaje cuando no hay resultados"""
+        self.stats_label.config(text=f"❌ No se encontraron resultados para '{query}'")
+        
+        no_results_frame = ttk.Frame(self.results_frame)
+        no_results_frame.pack(fill=tk.BOTH, expand=True, pady=50)
+        
+        message = f"""
+        🔍 No se encontraron resultados para: "{query}"
+        
+        Sugerencias:
+        • Verifica la ortografía
+        • Intenta con palabras más generales
+        • Usa palabras clave diferentes
+        """
+        
+        label = tk.Label(no_results_frame,
+                        text=message,
+                        font=('Segoe UI', 11),
+                        bg='#f0f0f0',
+                        fg='#64748b',
+                        justify=tk.CENTER)
+        label.pack()
+    
+    def create_result_card(self, index, doc, word):
+        """Crea una tarjeta de resultado"""
+        card = tk.Frame(self.results_frame,
+                       bg='white',
+                       relief='solid',
+                       borderwidth=1)
+        card.pack(fill=tk.X, pady=5, padx=5)
+        
+        # Padding interno
+        content = tk.Frame(card, bg='white')
+        content.pack(fill=tk.BOTH, expand=True, padx=15, pady=12)
+        
+        # Título
+        title_frame = tk.Frame(content, bg='white')
+        title_frame.pack(fill=tk.X, pady=(0, 8))
+        
+        number_label = tk.Label(title_frame,
+                               text=f"{index}.",
+                               font=('Segoe UI', 12, 'bold'),
+                               bg='white',
+                               fg='#2563EB')
+        number_label.pack(side=tk.LEFT, padx=(0, 5))
+        
+        filename_label = tk.Label(title_frame,
+                                 text=doc['filename'],
+                                 font=('Segoe UI', 12, 'bold'),
+                                 bg='white',
+                                 fg='#1e293b')
+        filename_label.pack(side=tk.LEFT)
+        
+        relevance_label = tk.Label(title_frame,
+                                  text=f"{doc['relevance']:.1f}% relevante",
+                                  font=('Segoe UI', 9),
+                                  bg='#dbeafe',
+                                  fg='#1e40af',
+                                  padx=8,
+                                  pady=2)
+        relevance_label.pack(side=tk.RIGHT)
+        
+        # Vista previa
+        preview = self.search_engine.get_document_preview(doc['filename'])
+        preview_label = tk.Label(content,
+                                text=preview,
+                                font=('Segoe UI', 9),
+                                bg='white',
+                                fg='#64748b',
+                                wraplength=900,
+                                justify=tk.LEFT)
+        preview_label.pack(fill=tk.X, pady=(0, 8))
+        
+        # Botón para ver documento
+        btn_frame = tk.Frame(content, bg='white')
+        btn_frame.pack(fill=tk.X)
+        
+        view_btn = tk.Button(btn_frame,
+                            text="Ver documento completo",
+                            font=('Segoe UI', 9),
+                            bg='#2563EB',
+                            fg='white',
+                            relief='flat',
+                            padx=12,
+                            pady=6,
+                            cursor='hand2',
+                            command=lambda: self.view_document(doc['filename']))
+        view_btn.pack(side=tk.LEFT)
+    
+    def create_result_card_multiple(self, index, doc):
+        """Crea tarjeta de resultado para búsqueda múltiple"""
+        card = tk.Frame(self.results_frame,
+                       bg='white',
+                       relief='solid',
+                       borderwidth=1)
+        card.pack(fill=tk.X, pady=5, padx=5)
+        
+        content = tk.Frame(card, bg='white')
+        content.pack(fill=tk.BOTH, expand=True, padx=15, pady=12)
+        
+        # Título
+        title_frame = tk.Frame(content, bg='white')
+        title_frame.pack(fill=tk.X, pady=(0, 8))
+        
+        number_label = tk.Label(title_frame,
+                               text=f"{index}.",
+                               font=('Segoe UI', 12, 'bold'),
+                               bg='white',
+                               fg='#2563EB')
+        number_label.pack(side=tk.LEFT, padx=(0, 5))
+        
+        filename_label = tk.Label(title_frame,
+                                 text=doc['filename'],
+                                 font=('Segoe UI', 12, 'bold'),
+                                 bg='white',
+                                 fg='#1e293b')
+        filename_label.pack(side=tk.LEFT)
+        
+        relevance_label = tk.Label(title_frame,
+                                  text=f"{doc['relevance']:.1f}% relevante",
+                                  font=('Segoe UI', 9),
+                                  bg='#dbeafe',
+                                  fg='#1e40af',
+                                  padx=8,
+                                  pady=2)
+        relevance_label.pack(side=tk.RIGHT)
+        
+        # Palabras encontradas
+        words_text = f"Palabras encontradas: {', '.join(doc['matched_words'])}"
+        words_label = tk.Label(content,
+                              text=words_text,
+                              font=('Segoe UI', 9),
+                              bg='white',
+                              fg='#16a34a')
+        words_label.pack(fill=tk.X, pady=(0, 8))
+        
+        # Vista previa
+        preview = self.search_engine.get_document_preview(doc['filename'])
+        preview_label = tk.Label(content,
+                                text=preview,
+                                font=('Segoe UI', 9),
+                                bg='white',
+                                fg='#64748b',
+                                wraplength=900,
+                                justify=tk.LEFT)
+        preview_label.pack(fill=tk.X, pady=(0, 8))
+        
+        # Botón
+        btn_frame = tk.Frame(content, bg='white')
+        btn_frame.pack(fill=tk.X)
+        
+        view_btn = tk.Button(btn_frame,
+                            text="Ver documento completo",
+                            font=('Segoe UI', 9),
+                            bg='#2563EB',
+                            fg='white',
+                            relief='flat',
+                            padx=12,
+                            pady=6,
+                            cursor='hand2',
+                            command=lambda: self.view_document(doc['filename']))
+        view_btn.pack(side=tk.LEFT)
+    
+    def view_document(self, filename):
+        """Abre una ventana para ver el documento completo"""
+        filepath = os.path.join(self.search_engine.html_folder, filename)
+        
+        if not os.path.exists(filepath):
+            messagebox.showerror("Error", "No se pudo encontrar el documento.")
+            return
+        
+        # Crear ventana nueva
+        doc_window = tk.Toplevel(self.root)
+        doc_window.title(f"Documento: {filename}")
+        doc_window.geometry("800x600")
+        
+        # Frame principal
+        main_frame = ttk.Frame(doc_window, padding="10")
+        main_frame.pack(fill=tk.BOTH, expand=True)
+        
+        # Título
+        title_label = ttk.Label(main_frame,
+                               text=filename,
+                               font=('Segoe UI', 14, 'bold'))
+        title_label.pack(pady=(0, 10))
+        
+        # Área de texto con scroll
+        text_area = scrolledtext.ScrolledText(main_frame,
+                                              wrap=tk.WORD,
+                                              font=('Consolas', 10),
+                                              padx=10,
+                                              pady=10)
+        text_area.pack(fill=tk.BOTH, expand=True)
+        
+        # Leer y mostrar contenido
+        try:
+            with open(filepath, 'r', encoding='latin-1') as f:
+                content = f.read()
+                # Limpiar HTML
+                cleaned = re.sub(r'<.*?>', '', content)
+                cleaned = re.sub(r'\s+', ' ', cleaned)
+                text_area.insert('1.0', cleaned)
+                text_area.config(state='disabled')
+        except Exception as e:
+            text_area.insert('1.0', f"Error al leer el documento: {e}")
+            text_area.config(state='disabled')
+
+
+def main():
+    """Función principal"""
+    root = tk.Tk()
+    app = SearchGUI(root)
+    root.mainloop()
+
+
+if __name__ == "__main__":
+    main()

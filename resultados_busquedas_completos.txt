@@ -1,0 +1,145 @@
+================================================================================
+RESULTADOS DE BÚSQUEDAS - ACTIVIDAD 11 (VERSIÓN FINAL)
+Búsqueda optimizada sin cargar archivos en memoria
+================================================================================
+
+
+================================================================================
+BÚSQUEDA 1: Gauch
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 2: elephants
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 3: CSCE
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 4: Arkansas
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 5: gift
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 6: abcdef
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 7: 20
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 8: 20.07
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 9: 123-456-7890
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 10: lawyer consumers
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 11: garden computer
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+BÚSQUEDA 12: United States laws
+================================================================================
+
+--- CON STOPLIST ---
+❌ No se encontraron resultados
+
+--- SIN STOPLIST ---
+❌ No se encontraron resultados
+
+
+================================================================================
+RESUMEN DE TIEMPOS
+================================================================================
+Tiempo total CON stoplist: 0.0000 segundos
+Tiempo total SIN stoplist: 0.0000 segundos
+Tiempo promedio por búsqueda (CON): 0.0000 segundos
+Tiempo promedio por búsqueda (SIN): 0.0000 segundos

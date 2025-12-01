@@ -207,4 +207,4 @@ x 1
 you 4
 your 2
 Tiempo total de procesamiento de palabras y conteo (sin incluir archivos individuales): 0.0000 segundos
-Tiempo total de ejecucion: 0.0005 segundos
+Tiempo total de ejecucion: 0.0000 segundos

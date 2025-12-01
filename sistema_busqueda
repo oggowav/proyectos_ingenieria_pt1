@@ -4,9 +4,6 @@ import time
 import re
 from collections import Counter, defaultdict
 
-# ============================================================================
-# CONFIGURACIÓN GLOBAL
-# ============================================================================
 project_folder = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1'
 folder_path = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1/CS13309_Archivos_HTML/Files'
 output_folder = 'C:/Users/OGGO/Desktop/Ultimo Semestre/Fase1Act1/CS13309_Archivos_TEXT'
@@ -16,10 +13,6 @@ os.makedirs(output_folder, exist_ok=True)
 HASH_TABLE_SIZE = 20000 
 EMPTY_SLOT_INDICATOR = "vacio"
 EMPTY_POSTING_POSITION = -1
-
-# ============================================================================
-# FUNCIONES AUXILIARES
-# ============================================================================
 
 def extract_words(text):
     """Extrae palabras del texto usando expresión regular"""
@@ -46,10 +39,6 @@ def load_stoplist(stoplist_path):
     except Exception as e:
         print(f"ADVERTENCIA: Error al leer stoplist: {e}")
     return stopwords
-
-# ============================================================================
-# FUNCIONES DE ACTIVIDADES PREVIAS (A1-A9)
-# ============================================================================
 
 def process_words(cleaned_text, output_file):
     start_processing = time.time()
@@ -332,10 +321,6 @@ def create_filtered_hash_table_dictionary(folder_path, project_folder, matricula
         log.write(f"Tiempo total de ejecucion del programa: {total_time:.4f} segundos\n") 
     return file_durations, total_time, total_collisions, HASH_TABLE_SIZE
 
-# ============================================================================
-# FUNCIONES PARA ÍNDICE INVERTIDO (A11) - DOS VERSIONES
-# ============================================================================
-
 def create_inverted_index_with_options(folder_path, project_folder, 
                                        matricula="03038135", 
                                        use_stoplist=True,
@@ -351,7 +336,6 @@ def create_inverted_index_with_options(folder_path, project_folder,
     
     files_to_process = sorted([f for f in os.listdir(folder_path) if f.endswith('.html')])
     
-    # Cargar stoplist si se requiere
     stopwords = set()
     if use_stoplist:
         stoplist_path = os.path.join(project_folder, "Actividad9_stoplist.txt")
@@ -365,7 +349,6 @@ def create_inverted_index_with_options(folder_path, project_folder,
         log.write(f"Frecuencia mínima: {min_frequency}\n")
         log.write(f"Stoplist activa: {use_stoplist}\n\n")
         
-        # Crear archivo de documentos
         document_ids = {}
         documents_output = os.path.join(project_folder, f"documents{suffix}.txt")
         
@@ -381,11 +364,9 @@ def create_inverted_index_with_options(folder_path, project_folder,
         
         log.write("\n=== Procesando tokens ===\n")
         
-        # Diccionarios para el índice
         token_doc_freq = defaultdict(lambda: defaultdict(int))
         token_total_freq = Counter()
         
-        # Primera pasada: contar frecuencias
         for filename in files_to_process:
             start = time.time()
             full_path = os.path.join(folder_path, filename)
@@ -397,11 +378,9 @@ def create_inverted_index_with_options(folder_path, project_folder,
                 for w in words:
                     token = w.lower()
                     
-                    # Filtro 1: Longitud
                     if len(token) <= 1:
                         continue
                     
-                    # Filtro 2: Stoplist
                     if use_stoplist and token in stopwords:
                         continue
                     
@@ -411,7 +390,6 @@ def create_inverted_index_with_options(folder_path, project_folder,
             end = time.time()
             log.write(f"Tokens de {filename} procesados en {end - start:.4f} segundos\n")
         
-        # Filtro 3: Frecuencia mínima
         tokens_to_keep = {token for token, freq in token_total_freq.items() 
                          if freq >= min_frequency}
         
@@ -463,10 +441,6 @@ def create_inverted_index_with_options(folder_path, project_folder,
     print(f"  - Tokens indexados: {len(tokens_to_keep)}\n")
     
     return log_path
-
-# ============================================================================
-# FUNCIÓN DE BÚSQUEDA (RETRIEVE)
-# ============================================================================
 
 def normalize_token(token):
     """Normaliza el token a minúsculas para búsqueda"""
@@ -545,7 +519,6 @@ def get_document_names(documents_path, doc_ids):
         if doc_id in doc_map:
             results.append((doc_id, doc_map[doc_id], weight))
     
-    # Ordenar por peso descendente
     results.sort(key=lambda x: x[2], reverse=True)
     return results
 
@@ -563,7 +536,6 @@ def retrieve(search_token, use_stoplist=True):
     print(f"Usando índice: {'CON' if use_stoplist else 'SIN'} stoplist")
     print(f"{'='*60}\n")
     
-    # Buscar en el diccionario
     token_info = search_token_in_dictionary(dictionary_path, search_token)
     
     if token_info is None:
@@ -580,7 +552,6 @@ def retrieve(search_token, use_stoplist=True):
     print(f"  - Aparece en {token_info['docs']} documento(s)")
     print(f"  - Posición en posting: {token_info['posting_pos']}\n")
     
-    # Obtener documentos del posting
     doc_list = get_documents_from_posting(
         posting_path, 
         token_info['posting_pos'], 
@@ -591,14 +562,12 @@ def retrieve(search_token, use_stoplist=True):
         print("❌ No se pudieron recuperar los documentos del posting.")
         return
     
-    # Obtener nombres de archivos
     results = get_document_names(documents_path, doc_list)
     
     if not results:
         print("❌ No se pudieron recuperar los nombres de los documentos.")
         return
     
-    # Mostrar resultados
     print(f"📄 Documentos que contienen '{search_token}':\n")
     
     for i, (doc_id, filename, weight) in enumerate(results, 1):
@@ -607,10 +576,6 @@ def retrieve(search_token, use_stoplist=True):
     print(f"\n{'='*60}")
     print(f"Total: {len(results)} documento(s) encontrado(s)")
     print(f"{'='*60}\n")
-
-# ============================================================================
-# FUNCIÓN PARA EJECUTAR TODAS LAS ACTIVIDADES PREVIAS
-# ============================================================================
 
 def ejecutar_actividades_previas():
     """Ejecuta todas las actividades de la A1 a la A9"""
@@ -658,10 +623,6 @@ def ejecutar_actividades_previas():
     
     print("✓ Actividades A1-A9 completadas exitosamente\n")
 
-# ============================================================================
-# FUNCIÓN PARA PROBAR TODOS LOS TOKENS SOLICITADOS
-# ============================================================================
-
 def test_all_tokens():
     """Prueba todos los tokens solicitados"""
     
@@ -687,7 +648,6 @@ def test_all_tokens():
             f.write(f"TOKEN {i}: '{token}'\n")
             f.write(f"{'='*80}\n\n")
             
-            # Búsqueda CON stoplist
             f.write("--- CON STOPLIST ---\n")
             
             suffix = ""
@@ -706,7 +666,6 @@ def test_all_tokens():
             else:
                 f.write("❌ Token NO encontrado\n")
             
-            # Búsqueda SIN stoplist
             f.write("\n--- SIN STOPLIST ---\n")
             
             suffix = "_no_stoplist"
@@ -732,10 +691,6 @@ def test_all_tokens():
     print(f"✓ Resultados guardados en: {results_file}")
     print(f"{'='*80}\n")
 
-# ============================================================================
-# MENÚ PRINCIPAL
-# ============================================================================
-
 def mostrar_menu():
     """Muestra el menú principal"""
     print("\n" + "="*70)
@@ -751,7 +706,6 @@ def mostrar_menu():
 def main():
     """Función principal con menú interactivo"""
     
-    # Si se reciben argumentos de línea de comandos, ejecutar búsqueda directa
     if len(sys.argv) >= 2:
         token = sys.argv[1]
         use_stoplist = "--no-stoplist" not in sys.argv
